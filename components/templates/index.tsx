@@ -11,6 +11,7 @@ const PageTemplate = ({ children }: { children: ReactNode }) => {
       <Header />
       <div className="main-content pt-[64px] font-poppins">
         {children}
+        
       </div>
     </>
   );
