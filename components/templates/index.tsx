@@ -1,15 +1,17 @@
 import Head from "next/head";
 import React, { ReactNode } from "react";
+import { Header } from "../Header";
 
 const PageTemplate = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Head>
         <title>Alfie Martin - Web Developer</title>
-        <meta name='description' content='Front end developer portfolio site. 2022 update.' />
-        <link rel='icon' href='/error.ico' />
       </Head>
-      {children}
+      <Header />
+      <div className="main-content pt-[56px] font-poppins">
+        {children}
+      </div>
     </>
   );
 };
