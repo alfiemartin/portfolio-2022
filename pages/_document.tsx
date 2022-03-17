@@ -11,7 +11,7 @@ const Document = () => {
         <meta name='description' content='Front end developer portfolio site. 2022 update.' />
         <link rel='icon' href='/error.ico' />
       </Head>
-      <body>
+      <body className='bg-gray-200'>
         <Main />
         <NextScript />
       </body>

@@ -9,7 +9,7 @@ module.exports = {
         'poppins': ['Poppins']
       },
       height: {
-        '100-accom': 'calc(100vh - 56px)'
+        '100-accom': 'calc(100vh - 64px)'
       }
     },
   },

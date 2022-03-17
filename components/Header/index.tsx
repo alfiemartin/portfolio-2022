@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { useEffect, useState } from "react";
+import siteLogo from "../../public/error.ico";
 
 export const Header = () => {
   const [hidden, setHidden] = useState(false);
@@ -27,12 +29,15 @@ export const Header = () => {
 
   return (
     <header className='w-full'>
-      <nav className={`flex p-4 bg-gray-400 fixed w-full shadow ${hidden ? 'p-2' : null}`}>
-        <div className='flex-1'>
+      <nav className={`flex items-center bg-gray-300 fixed w-full z-10 shadow-md ${hidden ? 'p-2' : 'p-3'}`}>
+        <div className='flex flex-1 items-center'>
+          <picture className="w-[40px] mr-3">
+            <Image src={siteLogo} layout='responsive' alt='Site Logo' />
+          </picture>
           <p>Alfie Martin</p>
         </div>
         <div className='flex-1'>
-          <ul className='flex'>
+          <ul className='flex gap-3'>
             <li>1</li>
             <li>2</li>
             <li>3</li>
