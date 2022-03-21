@@ -9,10 +9,7 @@ const PageTemplate = ({ children }: { children: ReactNode }) => {
         <title>Alfie Martin - Web Developer</title>
       </Head>
       <Header />
-      <div className="main-content pt-[64px] font-poppins">
-        {children}
-        
-      </div>
+      <div className='main-content pt-[64px] font-poppins'>{children}</div>
     </>
   );
 };
