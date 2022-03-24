@@ -19,7 +19,7 @@ export const Introduction = () => {
           <h3 className="mb-10">Front-end Developer</h3>
           <h5 className="">Check out what i&apos;ve been doing ➡️</h5>
           <h5 className="mt-auto">
-            .... Or play a quick{" "}
+            .... Or play a quick{' '} 
             <span className="underline cursor-pointer">game?</span>
           </h5>
         </div>
