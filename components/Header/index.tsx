@@ -12,6 +12,7 @@ export const Header = () => {
   const scrollingDown = useHeadroom();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const globalState = useGlobalContext();
+  const [pageTitle, setPageTitle] = useState(globalState.pageTitle);
 
   useEffect(() => {
     setIsDarkMode(Cookies.get('dark-mode') === 'true' ? true : false)
@@ -29,6 +30,9 @@ export const Header = () => {
     }
   }, [isDarkMode])
 
+  useEffect(() => {
+    setPageTitle(globalState.pageTitle);
+  }, [globalState.pageTitle])
 
   return (
     <header className='w-full dark:text-white'>
@@ -39,7 +43,7 @@ export const Header = () => {
           </picture>
         </div>
         <div>
-          <h5 className="dark:text-gray-100">{globalState.pageTitle}</h5>
+          <h5 className="dark:text-gray-100">{pageTitle}</h5>
         </div>
         <div className='flex justify-end flex-1 gap-3'>
           <ul className='flex gap-3'>
