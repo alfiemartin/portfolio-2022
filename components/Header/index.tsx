@@ -1,15 +1,17 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ReactSwitch from "react-switch";
 import { useHeadroom } from "../../hooks/useHeadroom";
 import siteLogo from "../../public/error.ico";
 import moonImage from "../../public/moon.png";
 import sunImage from "../../public/sun.png";
 import Cookies from "js-cookie";
+import { useGlobalContext } from "../../pages/_app";
 
 export const Header = () => {
   const scrollingDown = useHeadroom();
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const globalState = useGlobalContext();
 
   useEffect(() => {
     setIsDarkMode(Cookies.get('dark-mode') === 'true' ? true : false)
@@ -27,6 +29,7 @@ export const Header = () => {
     }
   }, [isDarkMode])
 
+
   return (
     <header className='w-full dark:text-white'>
       <nav className={`flex items-center bg-gray-300 dark:bg-gray-900 fixed w-full z-10 shadow-md ${scrollingDown ? 'p-2' : 'p-3'}`}>
@@ -34,13 +37,12 @@ export const Header = () => {
           <picture className="w-[40px] mr-3">
             <Image src={siteLogo} layout='responsive' alt='Site Logo' />
           </picture>
-          <p>Alfie Martin</p>
+        </div>
+        <div>
+          <h5>{globalState.pageTitle}</h5>
         </div>
         <div className='flex justify-end flex-1 gap-3'>
           <ul className='flex gap-3'>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
           </ul>
           <ReactSwitch onChange={() => setIsDarkMode(prev => !prev)} checked={isDarkMode} checkedHandleIcon={checked()} uncheckedHandleIcon={unchecked()} checkedIcon={emptyEl()} uncheckedIcon={emptyEl()} />
         </div>
