@@ -18,7 +18,9 @@ export const Header = () => {
   useEffect(() => {
     if(isDarkMode) {
       document.documentElement.classList.add('dark');
-      Cookies.set('dark-mode', 'true', {expires: new Date(new Date().getTime() * 2)});
+
+      const longExpiryDate = new Date(new Date().getTime() * 2)
+      Cookies.set('dark-mode', 'true', {expires: longExpiryDate});
     } else {
       document.documentElement.classList.remove('dark');
       Cookies.remove('dark-mode');
