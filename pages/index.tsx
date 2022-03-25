@@ -4,10 +4,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper/types";
 import { useGlobalContext } from "./_app";
 import { Introduction } from "../components/Introduction";
-import "swiper/css";
 import { Projects } from "../components/Projects";
 import { WorkExperience } from "../components/WorkExperience";
-import { SlidesNav } from "../components/SlidesNav";
+import { SlidesButtonNav, SlidesNav } from "../components/SlidesNav";
+import "swiper/css";
 
 const Home: NextPage = () => {
   const globalState = useGlobalContext();
@@ -15,19 +15,28 @@ const Home: NextPage = () => {
   const [swiper, setSwiper] = useState<SwiperType>();
   const [activeSlide, setActiveSlide] = useState(0);
 
-  const handleSlideChange = ({ activeIndex }: SwiperType) => {
+  const getPageTitle = (index: number) => {
     let pageTitle: string;
 
-    switch (activeIndex) {
+    switch (index) {
       case 0:
-        pageTitle = "Hello World";
+        pageTitle = "Welcome";
         break;
       case 1:
         pageTitle = "Projects";
         break;
-      default:
+      case 2:
         pageTitle = "Professional Experience";
+        break;
+      default:
+        pageTitle = globalState.pageTitle ?? "";
     }
+
+    return pageTitle;
+  };
+
+  const handleSlideChange = ({ activeIndex }: SwiperType) => {
+    const pageTitle = getPageTitle(activeIndex);
 
     setActiveSlide(activeIndex);
     if (globalState.setPageTitle) globalState.setPageTitle(pageTitle);
@@ -52,7 +61,10 @@ const Home: NextPage = () => {
   };
 
   const changeActiveSlide = (i: number) => {
-    swiper?.slideTo(i);
+    if (!swiper) return;
+    if (i < 0 || i > swiper.slides.length - 1) return;
+
+    swiper.slideTo(i);
   };
 
   useEffect(() => {
@@ -62,30 +74,33 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <div className="container mx-auto px-4 md:px-16 lg:px-24 xl:px-32">
-      <Swiper
-        onSwiper={setSwiper}
-        onSlideChange={handleSlideChange}
-        onSliderMove={showNavTemp}
-      >
-        <SwiperSlide>
-          <Introduction />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Projects />
-        </SwiperSlide>
-        <SwiperSlide>
-          <WorkExperience />
-        </SwiperSlide>
-        <SlidesNav
-          showNav={showNav}
-          onMouseOver={handleNavHover}
-          onMouseLeave={handleNavLeave}
-          activeSlide={activeSlide}
-          changeActiveSlide={changeActiveSlide}
-        />
-      </Swiper>
-    </div>
+    <>
+      <div className="container mx-auto px-4 md:px-16 lg:px-24 xl:px-32">
+        <Swiper
+          onSwiper={setSwiper}
+          onSlideChange={handleSlideChange}
+          onSliderMove={showNavTemp}
+        >
+          <SwiperSlide>
+            <Introduction />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Projects />
+          </SwiperSlide>
+          <SwiperSlide>
+            <WorkExperience />
+          </SwiperSlide>
+          <SlidesNav
+            showNav={showNav}
+            onMouseOver={handleNavHover}
+            onMouseLeave={handleNavLeave}
+            activeSlide={activeSlide}
+            changeActiveSlide={changeActiveSlide}
+          />
+        </Swiper>
+      </div>
+      <SlidesButtonNav activeSlide={activeSlide} changeActiveSlide={changeActiveSlide} getPageTitle={getPageTitle} swiper={swiper}  />
+    </>
   );
 };
 
