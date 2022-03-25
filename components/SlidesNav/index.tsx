@@ -1,5 +1,6 @@
 import Swiper from "swiper";
 import RippleButton from "../RippleButton";
+import {FaAngleLeft, FaAngleRight} from "react-icons/fa";
 
 export type SlidesNavProps = {
   showNav: boolean;
@@ -69,7 +70,8 @@ export const SlidesButtonNav = ({
         }`}
         onClick={() => changeActiveSlide(activeSlide - 1)}
       >
-        {getPageTitle(activeSlide - 1)}
+        <FaAngleLeft className="inline-block mr-2 text-xl text-gray-900 relative top-[-1px]" />
+        {getPageTitle(activeSlide - 1)} 
       </RippleButton>
       <RippleButton
         className={`${swiperButtonClasses} ${
@@ -80,6 +82,7 @@ export const SlidesButtonNav = ({
         onClick={() => changeActiveSlide(activeSlide + 1)}
       >
         {getPageTitle(activeSlide + 1)}
+        <FaAngleRight className="inline-block ml-2 text-xl text-gray-900 relative top-[-1px]" />
       </RippleButton>
     </div>
   );
