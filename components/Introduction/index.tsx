@@ -1,6 +1,6 @@
 import alfieImage from "../../public/alfie-full.jpg";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useGlobalContext } from "../../pages/_app";
 import { GameModal } from "../GameModal";
 
