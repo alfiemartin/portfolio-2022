@@ -1,5 +1,8 @@
-import { Ripple } from "@minimal_ui/react-ripple";
+import dynamic from "next/dynamic";
 import Swiper from "swiper";
+import { RippleType } from "../../types";
+const Ripple = dynamic<RippleType>(() => import('@minimal_ui/react-ripple').then(i => i.Ripple), {ssr: false});
+
 
 export type SlidesNavProps = {
   showNav: boolean;

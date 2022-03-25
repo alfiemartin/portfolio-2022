@@ -1,19 +1,28 @@
 import alfieImage from "../../public/alfie-full.jpg";
-import Modal from "react-modal";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { swiperButtonClasses } from "../SlidesNav";
+import { useGlobalContext } from "../../pages/_app";
+import { GameModal } from "../GameModal";
 
 export const Introduction = () => {
   const [showGame, setShowGame] = useState(false);
   const [revealGame, setRevealGame] = useState(false);
+  const {setPageTitle} = useGlobalContext();
 
   const handleModalClose = () => {
+    if(setPageTitle) setPageTitle('Welcome');
+    
     setRevealGame(false);
 
     setTimeout(() => {
       setShowGame(false);
-    }, 1000)
+    }, 700)
+  }
+
+  const handleAfterModalOpen = () => {
+    if(setPageTitle) setPageTitle('My First Game');
+
+    setRevealGame(true);
   }
 
   return (
@@ -34,19 +43,11 @@ export const Introduction = () => {
           <h5 className="">Check out what i&apos;ve been doing ➡️</h5>
           <h5 className="mt-auto">
             .... Or play a quick{' '} 
-            <button className="underline cursor-pointer" onClick={() => setShowGame(true)}>game?</button>
+            <button className="underline cursor-pointer hover:text-blue-800 dark:hover:text-blue-500 transition-colors" onClick={() => setShowGame(true)}>game?</button>
           </h5>
         </div>
       </div>
-      <Modal isOpen={showGame} onAfterOpen={() => setRevealGame(true)} className={"bottom-0 absolute w-screen h-100-accom z-20"} overlayClassName="z-20">
-        <div className={`w-full h-full transition-opacity duration-1000 ${revealGame ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="w-full h-100-accom absolute bottom-0 flex justify-between items-end p-12 pointer-events-none">
-            <button className={`${swiperButtonClasses} pointer-events-auto`} onClick={handleModalClose} >Quit Game</button>
-            <button className={`${swiperButtonClasses} pointer-events-auto`}>About This Projects</button>
-          </div>
-          <iframe height={'100%'} width={'100%'} src='https://tapflash-77edb.web.app/' />
-        </div>
-      </Modal>
+      <GameModal handleAfterModalOpen={handleAfterModalOpen} handleModalClose={handleModalClose} revealGame={revealGame} showGame={showGame} />
     </div>
   );
 };
