@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Modal from "react-modal";
+import { GameModalSlideout } from "../GameModalSlideout";
 import { swiperButtonClasses } from "../SlidesNav";
 
 export type GameModalProps = {
@@ -34,8 +35,9 @@ export const GameModal = ({
           height={"100%"}
           width={"100%"}
           src="https://tapflash-77edb.web.app/"
+          className={`z-10`}
         />
-        <div className="w-full h-100-accom absolute bottom-0 flex justify-between items-end p-12 pointer-events-none z-10">
+        <div className="w-full h-100-accom absolute bottom-0 flex justify-between items-end p-12 pointer-events-none z-30">
           <button
             className={`${swiperButtonClasses} pointer-events-auto`}
             onClick={handleModalClose}
@@ -44,23 +46,12 @@ export const GameModal = ({
           </button>
           <button
             className={`${swiperButtonClasses} pointer-events-auto`}
-            onClick={() => setShowProjectInfo((prev) => !prev)}
+            onClick={() => setShowProjectInfo(prev => !prev)}
           >
-            About This Projects
+            {showProjectInfo ? 'Close Info' : 'About This Project'}
           </button>
         </div>
-        <div
-          className="h-100-accom w-screen absolute inset-0"
-          onClick={() => setShowProjectInfo(false)}
-        >
-          <aside
-            className={`absolute right-0 top-0 h-full w-1/3 transition-all duration-300 ease-out bg-red-200 z-20 pointer-events-auto ${
-              showProjectInfo ? "translate-x-0" : "translate-x-full"
-            }`}
-          >
-            hello world
-          </aside>
-        </div>
+        <GameModalSlideout setShowProjectInfo={setShowProjectInfo} showProjectInfo={showProjectInfo} />
       </div>
     </Modal>
   );
