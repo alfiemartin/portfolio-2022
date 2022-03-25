@@ -1,7 +1,12 @@
 import alfieImage from "../../public/alfie-full.jpg";
+import Modal from "react-modal";
 import Image from "next/image";
+import { useState } from "react";
+import { swiperButtonClasses } from "../SlidesNav";
 
 export const Introduction = () => {
+  const [showGame, setShowGame] = useState(false);
+
   return (
     <div className="h-100-accom flex justify-center items-center">
       <div className="flex gap-4">
@@ -20,13 +25,17 @@ export const Introduction = () => {
           <h5 className="">Check out what i&apos;ve been doing ➡️</h5>
           <h5 className="mt-auto">
             .... Or play a quick{' '} 
-            <span className="underline cursor-pointer">game?</span>
+            <button className="underline cursor-pointer" onClick={() => setShowGame(true)}>game?</button>
           </h5>
         </div>
       </div>
-      {/* scroll to top of page to reveal message like sc refresh. */}
-      {/* have it how it is now but like a  slideshow */}
-      {/* Have the top nav bar to display the page title with navigational arrows */}
+      <Modal isOpen={showGame} className={"bg-red-200 bottom-0 absolute w-screen h-100-accom z-20"} overlayClassName="z-20">
+        <div className="w-full h-100-accom absolute bottom-0 flex justify-between items-end p-12 pointer-events-none">
+          <button className={`${swiperButtonClasses} pointer-events-auto`} onClick={() => setShowGame(false)} >Quit Game</button>
+          <button className={`${swiperButtonClasses} pointer-events-auto`}>About This Projects</button>
+        </div>
+        <iframe height={'100%'} width={'100%'} src='https://tapflash-77edb.web.app/' />
+      </Modal>
     </div>
   );
 };

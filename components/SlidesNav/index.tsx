@@ -17,6 +17,8 @@ export type SlidesButtonNavProps = {
 };
 
 const slideNames = ["Welcome", "Projects", "Professional Experience"];
+export const swiperButtonClasses =
+    "py-2 px-6 bg-gray-800 text-white dark:text-black dark:bg-gray-200 hover:bg-gray-700 dark:hover:bg-gray-300 transition-all";
 
 export const SlidesNav = ({
   showNav,
@@ -59,8 +61,6 @@ export const SlidesButtonNav = ({
   getPageTitle,
   swiper,
 }: SlidesButtonNavProps) => {
-  const swiperButtonClasses =
-    "py-2 px-6 bg-gray-800 text-white dark:text-black dark:bg-gray-200 hover:bg-gray-700 dark:hover:bg-gray-300 transition-all";
 
   return (
     <div className="w-full h-100-accom absolute bottom-0 flex justify-between items-end p-12">
