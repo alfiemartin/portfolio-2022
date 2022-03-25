@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import { GameModalSlideout } from "../GameModalSlideout";
+import RippleButton from "../RippleButton";
 import { swiperButtonClasses } from "../SlidesNav";
 
 export type GameModalProps = {
@@ -38,20 +39,23 @@ export const GameModal = ({
           className={`z-10`}
         />
         <div className="w-full h-100-accom absolute bottom-0 flex justify-between items-end p-12 pointer-events-none z-30">
-          <button
+          <RippleButton
             className={`${swiperButtonClasses} pointer-events-auto`}
             onClick={handleModalClose}
           >
             Quit Game
-          </button>
-          <button
+          </RippleButton>
+          <RippleButton
             className={`${swiperButtonClasses} pointer-events-auto`}
-            onClick={() => setShowProjectInfo(prev => !prev)}
+            onClick={() => setShowProjectInfo((prev) => !prev)}
           >
-            {showProjectInfo ? 'Close Info' : 'About This Project'}
-          </button>
+            {showProjectInfo ? "Close Info" : "About This Project"}
+          </RippleButton>
         </div>
-        <GameModalSlideout setShowProjectInfo={setShowProjectInfo} showProjectInfo={showProjectInfo} />
+        <GameModalSlideout
+          setShowProjectInfo={setShowProjectInfo}
+          showProjectInfo={showProjectInfo}
+        />
       </div>
     </Modal>
   );
