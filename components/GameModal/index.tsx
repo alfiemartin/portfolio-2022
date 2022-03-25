@@ -28,7 +28,7 @@ export const GameModal = ({
       overlayClassName="z-20"
     >
       <div
-        className={`w-full h-full transition-opacity duration-700 ${
+        className={`w-full h-full transition-opacity duration-700 p-4 bg-gray-200 dark:bg-gray-800 rounded-md ${
           revealGame ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -36,7 +36,7 @@ export const GameModal = ({
           height={"100%"}
           width={"100%"}
           src="https://tapflash-77edb.web.app/"
-          className={`z-10`}
+          className={`z-10 rounded`}
         />
         <div className="w-full h-100-accom absolute bottom-0 flex justify-between items-end p-12 pointer-events-none z-30">
           <RippleButton
