@@ -52,14 +52,6 @@ const Home: NextPage = () => {
     }, 300);
   };
 
-  const showNavTemp = () => {
-    setShowNav(true);
-
-    setTimeout(() => {
-      setShowNav(false);
-    }, 5000);
-  };
-
   const changeActiveSlide = (i: number) => {
     if (!swiper) return;
     if (i < 0 || i > swiper.slides.length - 1) return;
@@ -75,12 +67,8 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div className="container mx-auto px-4 md:px-16 lg:px-24 xl:px-32">
-        <Swiper
-          onSwiper={setSwiper}
-          onSlideChange={handleSlideChange}
-          onSliderMove={showNavTemp}
-        >
+      <div className='container mx-auto px-4 md:px-16 lg:px-24 xl:px-32'>
+        <Swiper onSwiper={setSwiper} onSlideChange={handleSlideChange}>
           <SwiperSlide>
             <Introduction />
           </SwiperSlide>
@@ -99,7 +87,13 @@ const Home: NextPage = () => {
           />
         </Swiper>
       </div>
-      <SlidesButtonNav activeSlide={activeSlide} changeActiveSlide={changeActiveSlide} getPageTitle={getPageTitle} swiper={swiper}  />
+      <SlidesButtonNav
+        className={showNav ? "opacity-0" : "opacity-100"}
+        activeSlide={activeSlide}
+        changeActiveSlide={changeActiveSlide}
+        getPageTitle={getPageTitle}
+        swiper={swiper}
+      />
     </>
   );
 };
