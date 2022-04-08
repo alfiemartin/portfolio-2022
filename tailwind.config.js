@@ -11,6 +11,9 @@ module.exports = {
       },
       height: {
         '100-accom': 'calc(100vh - 64px)'
+      },
+      boxShadow: {
+        'left': '3px 5px 14px 5px rgb(0 0 0 / 58%)'
       }
     },
   },

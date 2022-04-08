@@ -48,21 +48,14 @@ export const Header = () => {
         <div className='flex justify-end flex-1 gap-3'>
           <ul className='flex gap-3'>
           </ul>
-          <ReactSwitch onChange={() => setIsDarkMode(prev => !prev)} checked={isDarkMode} checkedHandleIcon={checked()} uncheckedHandleIcon={unchecked()} checkedIcon={emptyEl()} uncheckedIcon={emptyEl()} />
+          <ReactSwitch onChange={() => setIsDarkMode(prev => !prev)} checked={isDarkMode} checkedHandleIcon={Checked} uncheckedHandleIcon={Unchecked} checkedIcon={<></>} uncheckedIcon={<></>} />
         </div>
       </nav>
     </header>
   );
 };
 
-const checked = () => {
-  return <Image src={moonImage} layout='responsive' alt='moon' />
-}
+const Checked = <Image src={moonImage} layout='responsive' alt='moon' />
+const Unchecked = <Image src={sunImage} layout='responsive' alt='sun' />
 
-const unchecked = () => {
-  return <Image src={sunImage} layout='responsive' alt='sun' />
-}
 
-const emptyEl = () => {
-  return <></>
-}

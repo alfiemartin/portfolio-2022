@@ -43,7 +43,7 @@ export const Introduction = () => {
           <h5 className="">Check out what i&apos;ve been doing ➡️</h5>
           <h5 className="mt-auto">
             .... Or play a quick{' '} 
-            <button className="underline cursor-pointer hover:text-blue-800 dark:hover:text-blue-500 transition-colors" onClick={() => setShowGame(true)}>game?</button>
+            <button className="underline cursor-pointer hover:text-blue-800 dark:hover:text-blue-500" onClick={() => setShowGame(true)}>game?</button>
           </h5>
         </div>
       </div>
