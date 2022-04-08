@@ -1,6 +1,6 @@
 import Swiper from "swiper";
 import RippleButton from "../RippleButton";
-import {FaAngleLeft, FaAngleRight} from "react-icons/fa";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 export type SlidesNavProps = {
   showNav: boolean;
@@ -15,6 +15,7 @@ export type SlidesButtonNavProps = {
   getPageTitle: (index: number) => string;
   changeActiveSlide: (i: number) => void;
   swiper: Swiper | undefined;
+  className?: string;
 };
 
 const slideNames = ["Welcome", "Projects", "Professional Experience"];
@@ -36,7 +37,7 @@ export const SlidesNav = ({
       onMouseOver={onMouseOver}
       onMouseLeave={onMouseLeave}
     >
-      <div className="bg-gray-600 text-gray-100 rounded-t-lg h-12 grid place-items-center">
+      <div className='bg-gray-600 text-gray-100 rounded-t-lg h-12 grid place-items-center'>
         <ul className={`flex justify-center gap-20 shadow-inner`}>
           {slideNames.map((slide, i) => (
             <li key={i}>
@@ -61,28 +62,27 @@ export const SlidesButtonNav = ({
   changeActiveSlide,
   getPageTitle,
   swiper,
+  className: extraClasses,
 }: SlidesButtonNavProps) => {
   return (
-    <div className="w-full h-100-accom absolute bottom-0 flex justify-between items-end p-12">
+    <div
+      className={`${extraClasses} w-full h-100-accom absolute bottom-0 flex justify-between items-end p-12 transition-opacity duration-300`}
+    >
       <RippleButton
-        className={`${swiperButtonClasses} ${
-          activeSlide - 1 < 0 ? "opacity-0" : "opacity-100"
-        }`}
+        className={`${swiperButtonClasses} ${activeSlide - 1 < 0 ? "opacity-0" : "opacity-100"}`}
         onClick={() => changeActiveSlide(activeSlide - 1)}
       >
-        <FaAngleLeft className="inline-block mr-2 text-xl text-gray-900 relative top-[-1px]" />
-        {getPageTitle(activeSlide - 1)} 
+        <FaAngleLeft className='inline-block mr-2 text-xl text-gray-900 relative top-[-1px]' />
+        {getPageTitle(activeSlide - 1)}
       </RippleButton>
       <RippleButton
         className={`${swiperButtonClasses} ${
-          swiper && activeSlide + 1 > swiper.slides.length - 1
-            ? "opacity-0"
-            : "opacity-100"
+          swiper && activeSlide + 1 > swiper.slides.length - 1 ? "opacity-0" : "opacity-100"
         }`}
         onClick={() => changeActiveSlide(activeSlide + 1)}
       >
         {getPageTitle(activeSlide + 1)}
-        <FaAngleRight className="inline-block ml-2 text-xl text-gray-900 relative top-[-1px]" />
+        <FaAngleRight className='inline-block ml-2 text-xl text-gray-900 relative top-[-1px]' />
       </RippleButton>
     </div>
   );
