@@ -98,11 +98,10 @@ const Home: NextPage = () => {
       />
       <div className='absolute w-screen h-screen inset-0'>
         {typeof window !== "undefined" && (
-          <Canvas>
+          <Canvas style={{ backgroundColor: "none" }}>
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
-            <Box position={[-1.2, 0, 0]} />
-            <Box position={[1.2, 0, 0]} />
+            <Box position={[0, 0, 0]} />
           </Canvas>
         )}
       </div>
@@ -114,18 +113,16 @@ function Box(props: JSX.IntrinsicElements["mesh"]) {
   const ref = useRef<THREE.Mesh>(null!);
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
-  useFrame((state, delta) => (ref.current.rotation.x += 0.01));
+  useFrame((state, delta) => {
+    ref.current.rotation.x += 0.01;
+    ref.current.rotation.y += 0.01;
+    ref.current.rotation.z += 0.01;
+  });
+
   return (
-    <mesh
-      {...props}
-      ref={ref}
-      scale={clicked ? 1.5 : 1}
-      onClick={(event) => click(!clicked)}
-      onPointerOver={(event) => hover(true)}
-      onPointerOut={(event) => hover(false)}
-    >
+    <mesh {...props} ref={ref} scale={clicked ? 1.5 : 1} onClick={(event) => click(!clicked)}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
+      <meshStandardMaterial color={"hotpink"} />
     </mesh>
   );
 }

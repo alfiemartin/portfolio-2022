@@ -81,7 +81,7 @@ export const SlidesButtonNav = ({
       </RippleButton>
       <RippleButton
         className={`${swiperButtonClasses} ${
-          swiper && activeSlide + 1 > swiper.slides.length - 1 ? "opacity-0" : "opacity-100"
+          swiper && activeSlide + 1 > swiper.slides?.length - 1 ? "opacity-0" : "opacity-100"
         }`}
         onClick={() => changeActiveSlide(activeSlide + 1)}
       >
