@@ -76,7 +76,7 @@ export const SlidesButtonNav = ({
         className={`${swiperButtonClasses} ${activeSlide - 1 < 0 ? "opacity-0" : "opacity-100"}`}
         onClick={() => changeActiveSlide(activeSlide - 1)}
       >
-        <FaAngleLeft className='inline-block mr-2 text-xl text-gray-900 relative top-[-1px]' />
+        <FaAngleLeft className='inline-block mr-2 text-xl text-gray-100 dark:text-gray-900 relative top-[-1px]' />
         {breakpoint !== "xs" && getPageTitle(activeSlide - 1)}
       </RippleButton>
       <RippleButton
@@ -86,7 +86,7 @@ export const SlidesButtonNav = ({
         onClick={() => changeActiveSlide(activeSlide + 1)}
       >
         {breakpoint !== "xs" && getPageTitle(activeSlide + 1)}
-        <FaAngleRight className='inline-block ml-2 text-xl text-gray-900 relative top-[-1px]' />
+        <FaAngleRight className='inline-block ml-2 text-xl text-gray-100 dark:text-gray-900 relative top-[-1px]' />
       </RippleButton>
     </div>
   );
