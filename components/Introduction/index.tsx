@@ -3,9 +3,9 @@ import Image from "next/image";
 
 export const Introduction = () => {
   return (
-    <div className='h-100-accom flex justify-center items-start sm:items-center'>
-      <div className='flex gap-4 flex-col-reverse sm:flex-row'>
-        <div className='w-100 sm:w-[600px] p-2 bg-black shadow-lg overflow-hidden'>
+    <div className='h-100-accom flex justify-center items-start md:items-center'>
+      <div className='flex gap-4 flex-col-reverse md:flex-row'>
+        <div className='w-100 md:w-[600px] p-2 bg-black shadow-lg overflow-hidden'>
           <Image
             src={alfieImage}
             layout='responsive'

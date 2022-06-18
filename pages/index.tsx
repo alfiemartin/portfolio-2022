@@ -67,7 +67,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div className='container mx-auto pt-8 sm:pt-0'>
+      <div className='container mx-auto pt-8 md:pt-0'>
         <Swiper onSwiper={setSwiper} onSlideChange={handleSlideChange}>
           <SwiperSlide>
             <Introduction />
