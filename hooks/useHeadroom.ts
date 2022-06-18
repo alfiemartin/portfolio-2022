@@ -7,23 +7,23 @@ export const useHeadroom = () => {
   useEffect(() => {
     const handleWindowScroll = () => {
       const scrollHeight = window.scrollY;
-  
-      if(scrollHeight < previousScrollHeight) {
+
+      if (scrollHeight < previousScrollHeight) {
         setScrollingDown(false);
-      } else if(scrollHeight > 5) {
+      } else if (scrollHeight > 5) {
         setScrollingDown(true);
       } else {
         setScrollingDown(false);
       }
-  
-      setPreviousScrollHeight(scrollHeight);
-    }
 
-    window.addEventListener('scroll', handleWindowScroll)
+      setPreviousScrollHeight(scrollHeight);
+    };
+
+    window.addEventListener("scroll", handleWindowScroll);
     return () => {
-      window.removeEventListener('scroll', handleWindowScroll)
-    }
-  }, [previousScrollHeight])
+      window.removeEventListener("scroll", handleWindowScroll);
+    };
+  }, [previousScrollHeight]);
 
   return scrollingDown;
-}
+};

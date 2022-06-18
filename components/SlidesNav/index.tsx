@@ -1,9 +1,8 @@
 import Swiper from "swiper";
 import RippleButton from "../RippleButton";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
-import { getBreakpoints, getCurrentBreakpoint } from "../../utils";
+import { useBreakpoints } from "../../hooks/useBreakpoints";
 import { useEffect } from "react";
-
 
 export type SlidesNavProps = {
   showNav: boolean;
@@ -32,16 +31,11 @@ export const SlidesNav = ({
   activeSlide,
   changeActiveSlide,
 }: SlidesNavProps) => {
-
-  useEffect(() => {
-    console.log(getCurrentBreakpoint());
-  }, [])
-
   return (
     <div
       className={`absolute ${
         showNav ? "bottom-0" : "-bottom-8"
-      } transition-all ease-out duration-300 z-10 pt-8 w-full hidden lg:block`}
+      } transition-all ease-out duration-300 pt-8 w-full hidden lg:block z-10`}
       onMouseOver={onMouseOver}
       onMouseLeave={onMouseLeave}
     >
@@ -72,16 +66,18 @@ export const SlidesButtonNav = ({
   swiper,
   className: extraClasses,
 }: SlidesButtonNavProps) => {
+  const breakpoint = useBreakpoints();
+
   return (
     <div
-      className={`${extraClasses} w-full h-100-accom absolute bottom-0 flex justify-between items-end p-12 transition-opacity duration-300 z-10`}
+      className={`${extraClasses} w-full absolute bottom-0 flex justify-between items-end p-12 transition-opacity duration-300 z-10 lg:z-0`}
     >
       <RippleButton
         className={`${swiperButtonClasses} ${activeSlide - 1 < 0 ? "opacity-0" : "opacity-100"}`}
         onClick={() => changeActiveSlide(activeSlide - 1)}
       >
         <FaAngleLeft className='inline-block mr-2 text-xl text-gray-900 relative top-[-1px]' />
-        {getPageTitle(activeSlide - 1)}
+        {breakpoint !== "xs" && getPageTitle(activeSlide - 1)}
       </RippleButton>
       <RippleButton
         className={`${swiperButtonClasses} ${
@@ -89,7 +85,7 @@ export const SlidesButtonNav = ({
         }`}
         onClick={() => changeActiveSlide(activeSlide + 1)}
       >
-        {getPageTitle(activeSlide + 1)}
+        {breakpoint !== "xs" && getPageTitle(activeSlide + 1)}
         <FaAngleRight className='inline-block ml-2 text-xl text-gray-900 relative top-[-1px]' />
       </RippleButton>
     </div>

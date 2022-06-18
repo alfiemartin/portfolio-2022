@@ -8,7 +8,7 @@ import { useGlobalContext } from "../../pages/_app";
 
 export const Header = () => {
   const scrollingDown = useHeadroom();
-  const {isDark, pageTitle, setIsDark} = useGlobalContext();
+  const { isDark, pageTitle, setIsDark } = useGlobalContext();
 
   return (
     <header className='w-full dark:text-white'>
@@ -26,16 +26,20 @@ export const Header = () => {
           <h5 className='dark:text-gray-100'>{pageTitle}</h5>
         </div>
         <div className='flex justify-end flex-1 gap-3'>
-          <ul className='flex gap-3'>
-          </ul>
-          <ReactSwitch onChange={() => setIsDark(prev => !prev)} checked={isDark} checkedHandleIcon={Checked} uncheckedHandleIcon={Unchecked} checkedIcon={<></>} uncheckedIcon={<></>} />
+          <ul className='flex gap-3'></ul>
+          <ReactSwitch
+            onChange={() => setIsDark((prev) => !prev)}
+            checked={isDark}
+            checkedHandleIcon={Checked}
+            uncheckedHandleIcon={Unchecked}
+            checkedIcon={<></>}
+            uncheckedIcon={<></>}
+          />
         </div>
       </nav>
     </header>
   );
 };
 
-const Checked = <Image src={moonImage} layout='responsive' alt='moon' />
-const Unchecked = <Image src={sunImage} layout='responsive' alt='sun' />
-
-
+const Checked = <Image src={moonImage} layout='responsive' alt='moon' />;
+const Unchecked = <Image src={sunImage} layout='responsive' alt='sun' />;
