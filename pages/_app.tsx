@@ -19,7 +19,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     setIsDark(Cookies.get("dark-mode") === "true");
-    console.log("setIsDark");
   }, [])
 
   useEffect(() => {

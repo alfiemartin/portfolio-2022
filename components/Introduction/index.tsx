@@ -5,7 +5,7 @@ export const Introduction = () => {
   return (
     <div className="h-100-accom flex justify-center items-center">
       <div className="flex gap-4">
-        <div className="w-[600px] p-2 bg-black shadow-lg overflow-hidden">
+        <div className="w-[600px] p-2 bg-black shadow-lg overflow-hidden hidden md:block">
           <Image
             src={alfieImage}
             layout="responsive"

@@ -1,6 +1,9 @@
 import Swiper from "swiper";
 import RippleButton from "../RippleButton";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { getBreakpoints, getCurrentBreakpoint } from "../../utils";
+import { useEffect } from "react";
+
 
 export type SlidesNavProps = {
   showNav: boolean;
@@ -29,11 +32,16 @@ export const SlidesNav = ({
   activeSlide,
   changeActiveSlide,
 }: SlidesNavProps) => {
+
+  useEffect(() => {
+    console.log(getCurrentBreakpoint());
+  }, [])
+
   return (
     <div
       className={`absolute ${
         showNav ? "bottom-0" : "-bottom-8"
-      } transition-all ease-out duration-300 z-10 pt-8 w-full `}
+      } transition-all ease-out duration-300 z-10 pt-8 w-full hidden lg:block`}
       onMouseOver={onMouseOver}
       onMouseLeave={onMouseLeave}
     >
@@ -66,7 +74,7 @@ export const SlidesButtonNav = ({
 }: SlidesButtonNavProps) => {
   return (
     <div
-      className={`${extraClasses} w-full h-100-accom absolute bottom-0 flex justify-between items-end p-12 transition-opacity duration-300`}
+      className={`${extraClasses} w-full h-100-accom absolute bottom-0 flex justify-between items-end p-12 transition-opacity duration-300 z-10`}
     >
       <RippleButton
         className={`${swiperButtonClasses} ${activeSlide - 1 < 0 ? "opacity-0" : "opacity-100"}`}
