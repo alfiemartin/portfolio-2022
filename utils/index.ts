@@ -2,11 +2,11 @@ import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "../tailwind.config.js";
 import { TailwindConfig } from "tailwindcss/tailwind-config";
 
-const fullConfig = resolveConfig(tailwindConfig as TailwindConfig);
 
 export type Breakpoint = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
 export const getBreakpoints = () => {
+  const fullConfig = resolveConfig(tailwindConfig as TailwindConfig);
   return fullConfig.theme.screens as unknown as Record<string, string>;
 };
 

@@ -35,7 +35,7 @@ export const SlidesNav = ({
     <div
       className={`absolute ${
         showNav ? "bottom-0" : "-bottom-8"
-      } transition-all ease-out duration-300 pt-8 w-full hidden lg:block z-10`}
+      } transition-all ease-out duration-300 pt-8 w-full hidden lg:block z-10 container left-1/2 -translate-x-1/2`}
       onMouseOver={onMouseOver}
       onMouseLeave={onMouseLeave}
     >

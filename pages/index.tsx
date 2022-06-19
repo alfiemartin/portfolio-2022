@@ -9,7 +9,7 @@ import { Projects } from "../components/Projects";
 import { WorkExperience } from "../components/WorkExperience";
 import { SlidesButtonNav, SlidesNav } from "../components/SlidesNav";
 import "swiper/css";
-import { Canvas, useFrame } from "@react-three/fiber";
+// import { Canvas, useFrame } from "@react-three/fiber";
 
 const Home: NextPage = () => {
   const globalState = useGlobalContext();
@@ -69,18 +69,20 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div className='container mx-auto pt-8 h-100-accom flex flex-col md:pt-0'>
-        <Swiper onSwiper={setSwiper} onSlideChange={handleSlideChange}>
-          <SwiperSlide>
-            <Introduction />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Projects />
-          </SwiperSlide>
-          <SwiperSlide>
-            <WorkExperience />
-          </SwiperSlide>
-        </Swiper>
+      <div className='container mx-auto h-full flex flex-col justify-between pt-8 md:pt-0'>
+        <div>
+          <Swiper onSwiper={setSwiper} onSlideChange={handleSlideChange}>
+            <SwiperSlide>
+              <Introduction />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Projects />
+            </SwiperSlide>
+            <SwiperSlide>
+              <WorkExperience />
+            </SwiperSlide>
+          </Swiper>
+        </div>
         <SlidesButtonNav
           className={showNav ? "opacity-0" : "opacity-100"}
           activeSlide={activeSlide}
@@ -96,7 +98,7 @@ const Home: NextPage = () => {
         activeSlide={activeSlide}
         changeActiveSlide={changeActiveSlide}
       />
-      <div className='absolute w-screen h-screen inset-0'>
+      {/* <div className='absolute w-screen h-screen inset-0'>
         {typeof window !== "undefined" && (
           <Canvas style={{ backgroundColor: "none" }}>
             <ambientLight />
@@ -104,27 +106,27 @@ const Home: NextPage = () => {
             <Box position={[0, 0, 0]} />
           </Canvas>
         )}
-      </div>
+      </div> */}
     </>
   );
 };
 
-function Box(props: JSX.IntrinsicElements["mesh"]) {
-  const ref = useRef<THREE.Mesh>(null!);
-  const [hovered, hover] = useState(false);
-  const [clicked, click] = useState(false);
-  useFrame((state, delta) => {
-    ref.current.rotation.x += 0.01;
-    ref.current.rotation.y += 0.01;
-    ref.current.rotation.z += 0.01;
-  });
+// function Box(props: JSX.IntrinsicElements["mesh"]) {
+//   const ref = useRef<THREE.Mesh>(null!);
+//   const [hovered, hover] = useState(false);
+//   const [clicked, click] = useState(false);
+//   useFrame((state, delta) => {
+//     ref.current.rotation.x += 0.01;
+//     ref.current.rotation.y += 0.01;
+//     ref.current.rotation.z += 0.01;
+//   });
 
-  return (
-    <mesh {...props} ref={ref} scale={clicked ? 1.5 : 1} onClick={(event) => click(!clicked)}>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={"hotpink"} />
-    </mesh>
-  );
-}
+//   return (
+//     <mesh {...props} ref={ref} scale={clicked ? 1.5 : 1} onClick={(event) => click(!clicked)}>
+//       <boxGeometry args={[1, 1, 1]} />
+//       <meshStandardMaterial color={"hotpink"} />
+//     </mesh>
+//   );
+// }
 
 export default Home;
