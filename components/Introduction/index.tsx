@@ -14,7 +14,7 @@ export const Introduction = () => {
             alt='Checking alt tags i see 😩'
           />
         </div>
-        <div className='flex flex-col dark:text-gray-200'>
+        <div className='flex flex-col'>
           <h1>Alfie Martin</h1>
           <h3 className='mb-10'>Frontend Developer</h3>
           <h5 className=''>Check out what i&apos;ve been doing ➡️</h5>

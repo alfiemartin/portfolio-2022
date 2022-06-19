@@ -51,7 +51,7 @@ const Home: NextPage = () => {
   const handleNavLeave = (e: MouseEvent<HTMLDivElement>) => {
     setTimeout(() => {
       setShowNav(false);
-    }, 300);
+    }, 200);
   };
 
   const changeActiveSlide = (i: number) => {
@@ -64,7 +64,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     setTimeout(() => {
       setShowNav(false);
-    }, 3000);
+    }, 1500);
   }, []);
 
   return (

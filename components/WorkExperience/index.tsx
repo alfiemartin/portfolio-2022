@@ -1,3 +1,3 @@
 export const WorkExperience = () => {
-  return <div>Work Experience</div>
+  return <div><h1>Professional Experience</h1></div>
 }

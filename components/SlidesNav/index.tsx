@@ -2,7 +2,6 @@ import Swiper from "swiper";
 import RippleButton from "../RippleButton";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { useBreakpoints } from "../../hooks/useBreakpoints";
-import { useEffect } from "react";
 
 export type SlidesNavProps = {
   showNav: boolean;
