@@ -69,7 +69,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div className='container mx-auto pt-8 md:pt-0'>
+      <div className='container mx-auto pt-8 h-100-accom flex flex-col md:pt-0'>
         <Swiper onSwiper={setSwiper} onSlideChange={handleSlideChange}>
           <SwiperSlide>
             <Introduction />
@@ -80,21 +80,21 @@ const Home: NextPage = () => {
           <SwiperSlide>
             <WorkExperience />
           </SwiperSlide>
-          <SlidesNav
-            showNav={showNav}
-            onMouseOver={handleNavHover}
-            onMouseLeave={handleNavLeave}
-            activeSlide={activeSlide}
-            changeActiveSlide={changeActiveSlide}
-          />
         </Swiper>
+        <SlidesButtonNav
+          className={showNav ? "opacity-0" : "opacity-100"}
+          activeSlide={activeSlide}
+          changeActiveSlide={changeActiveSlide}
+          getPageTitle={getPageTitle}
+          swiper={swiper}
+        />
       </div>
-      <SlidesButtonNav
-        className={showNav ? "opacity-0" : "opacity-100"}
+      <SlidesNav
+        showNav={showNav}
+        onMouseOver={handleNavHover}
+        onMouseLeave={handleNavLeave}
         activeSlide={activeSlide}
         changeActiveSlide={changeActiveSlide}
-        getPageTitle={getPageTitle}
-        swiper={swiper}
       />
       <div className='absolute w-screen h-screen inset-0'>
         {typeof window !== "undefined" && (
