@@ -10,6 +10,8 @@ import { WorkExperience } from "../components/WorkExperience";
 import { SlidesButtonNav, SlidesNav } from "../components/SlidesNav";
 import "swiper/css";
 // import { Canvas, useFrame } from "@react-three/fiber";
+// import { Text3D } from "@react-three/drei";
+// import font from "../fonts/Poppins_Med_Regular.json";
 
 const Home: NextPage = () => {
   const globalState = useGlobalContext();
@@ -69,7 +71,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div className='container mx-auto h-full flex flex-col justify-between pt-8 md:pt-24'>
+      <main className='container mx-auto h-full flex flex-col justify-between pt-8 md:pt-24'>
         <div>
           <Swiper onSwiper={setSwiper} onSlideChange={handleSlideChange}>
             <SwiperSlide>
@@ -90,7 +92,7 @@ const Home: NextPage = () => {
           getPageTitle={getPageTitle}
           swiper={swiper}
         />
-      </div>
+      </main>
       <SlidesNav
         showNav={showNav}
         onMouseOver={handleNavHover}
@@ -103,7 +105,10 @@ const Home: NextPage = () => {
           <Canvas style={{ backgroundColor: "none" }}>
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
-            <Box position={[0, 0, 0]} />
+            <Text3D font={font as any} bevelEnabled bevelSize={0.1}>
+              Projects
+              <meshStandardMaterial color={"hotpink"} />
+            </Text3D>
           </Canvas>
         )}
       </div> */}
@@ -113,17 +118,14 @@ const Home: NextPage = () => {
 
 // function Box(props: JSX.IntrinsicElements["mesh"]) {
 //   const ref = useRef<THREE.Mesh>(null!);
-//   const [hovered, hover] = useState(false);
-//   const [clicked, click] = useState(false);
 //   useFrame((state, delta) => {
 //     ref.current.rotation.x += 0.01;
 //     ref.current.rotation.y += 0.01;
-//     ref.current.rotation.z += 0.01;
 //   });
 
 //   return (
-//     <mesh {...props} ref={ref} scale={clicked ? 1.5 : 1} onClick={(event) => click(!clicked)}>
-//       <boxGeometry args={[1, 1, 1]} />
+//     <mesh {...props} ref={ref} scale={1}>
+//       <sphereGeometry args={[1, 100, 10]} />
 //       <meshStandardMaterial color={"hotpink"} />
 //     </mesh>
 //   );

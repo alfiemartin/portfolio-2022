@@ -11,6 +11,7 @@
   "dependencies": {
     "-": "^0.0.1",
     "@minimal_ui/react-ripple": "^1.0.21",
+    "@react-three/drei": "^9.13.2",
     "@react-three/fiber": "^8.0.26",
     "@types/tailwindcss": "^3.0.10",
     "D": "^1.0.0",

@@ -19,7 +19,7 @@ export const Header = () => {
           </picture>
         </div>
         <div>
-          <h5 className='dark:text-gray-100'>{pageTitle}</h5>
+          <h5 className='dark:text-gray-100 font-thin'>{pageTitle}</h5>
         </div>
         <div className='flex justify-end flex-1 gap-3'>
           <ul className='flex gap-3'></ul>
