@@ -69,7 +69,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div className='container mx-auto h-full flex flex-col justify-between pt-8 md:pt-0'>
+      <div className='container mx-auto h-full flex flex-col justify-between pt-8 md:pt-24'>
         <div>
           <Swiper onSwiper={setSwiper} onSlideChange={handleSlideChange}>
             <SwiperSlide>

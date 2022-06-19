@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import PageTemplate from "../components/Foundations";
-import React, { useContext, useEffect, useState } from "react";
+import React, { StrictMode, useContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 
 type GlobalContext = {
@@ -34,11 +34,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [isDark]);
 
   return (
-    <GlobalContext.Provider value={{ pageTitle, setPageTitle, isDark, setIsDark }}>
-      <PageTemplate>
-        <Component {...pageProps} />
-      </PageTemplate>
-    </GlobalContext.Provider>
+    <StrictMode>
+      <GlobalContext.Provider value={{ pageTitle, setPageTitle, isDark, setIsDark }}>
+        <PageTemplate>
+          <Component {...pageProps} />
+        </PageTemplate>
+      </GlobalContext.Provider>
+    </StrictMode>
   );
 }
 

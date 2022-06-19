@@ -4,8 +4,8 @@ import Image from "next/image";
 export const Introduction = () => {
   return (
     <div className='flex justify-center items-start md:items-center'>
-      <div className='flex gap-4 flex-col-reverse md:flex-row'>
-        <div className='w-100 md:w-[600px] p-2 bg-black shadow-lg overflow-hidden'>
+      <div className='flex gap-4 w-full flex-col-reverse justify-center md:flex-row'>
+        <div className='w-full md:max-w-xl p-2 bg-black shadow-lg overflow-hidden'>
           <Image
             src={alfieImage}
             layout='responsive'
@@ -16,7 +16,7 @@ export const Introduction = () => {
         </div>
         <div className='flex flex-col dark:text-gray-200'>
           <h1>Alfie Martin</h1>
-          <h3 className='mb-10'>Front-end Developer</h3>
+          <h3 className='mb-10'>Frontend Developer</h3>
           <h5 className=''>Check out what i&apos;ve been doing ➡️</h5>
         </div>
       </div>
