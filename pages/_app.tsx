@@ -4,12 +4,13 @@ import PageTemplate from "../components/Foundations";
 import React, { StrictMode, useContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 
-type GlobalContext = {
+interface GlobalContext {
   pageTitle: string;
   setPageTitle: React.Dispatch<React.SetStateAction<string>>;
   isDark: boolean;
   setIsDark: React.Dispatch<React.SetStateAction<boolean>>;
-};
+}
+
 const GlobalContext = React.createContext<GlobalContext | null>(null);
 export const useGlobalContext = () => useContext(GlobalContext) as GlobalContext;
 
@@ -19,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     setIsDark(Cookies.get("dark-mode") === "true");
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (isDark) {
