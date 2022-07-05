@@ -25,7 +25,7 @@ export const Header = () => {
           <ul className='flex gap-3'></ul>
           <ReactSwitch
             onChange={() => setIsDark((prev) => !prev)}
-            checked={isDark}
+            checked={isDark ?? false}
             checkedHandleIcon={Checked}
             uncheckedHandleIcon={Unchecked}
             checkedIcon={<></>}
