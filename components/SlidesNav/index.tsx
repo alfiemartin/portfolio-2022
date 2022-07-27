@@ -38,7 +38,7 @@ export const SlidesNav = ({
       onMouseOver={onMouseOver}
       onMouseLeave={onMouseLeave}
     >
-      <div className='bg-gray-600 text-gray-100 rounded-t-lg h-12 grid place-items-center'>
+      <div className='bg-gradient-to-t from-gray-800 to-gray-700 dark:from-gray-700 dark:to-gray-600 text-gray-100 rounded-t-lg h-12 grid place-items-center'>
         <ul className={`flex justify-center gap-20 shadow-inner`}>
           {slideNames.map((slide, i) => (
             <li key={i}>

@@ -3,15 +3,12 @@ import React, { MouseEvent, useEffect, useRef, useState } from "react";
 import type { NextPage } from "next";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper/types";
-import { useGlobalContext } from "./_app";
+import { useGlobalContext } from "../context/GlobalContext";
 import { Introduction } from "../components/Introduction";
 import { Projects } from "../components/Projects";
 import { WorkExperience } from "../components/WorkExperience";
 import { SlidesButtonNav, SlidesNav } from "../components/SlidesNav";
 import "swiper/css";
-// import { Canvas, useFrame } from "@react-three/fiber";
-// import { Text3D } from "@react-three/drei";
-// import font from "../fonts/Poppins_Med_Regular.json";
 
 const Home: NextPage = () => {
   const globalState = useGlobalContext();
@@ -115,20 +112,5 @@ const Home: NextPage = () => {
     </>
   );
 };
-
-// function Box(props: JSX.IntrinsicElements["mesh"]) {
-//   const ref = useRef<THREE.Mesh>(null!);
-//   useFrame((state, delta) => {
-//     ref.current.rotation.x += 0.01;
-//     ref.current.rotation.y += 0.01;
-//   });
-
-//   return (
-//     <mesh {...props} ref={ref} scale={1}>
-//       <sphereGeometry args={[1, 100, 10]} />
-//       <meshStandardMaterial color={"hotpink"} />
-//     </mesh>
-//   );
-// }
 
 export default Home;

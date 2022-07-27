@@ -3,7 +3,7 @@ import ReactSwitch from "react-switch";
 import siteLogo from "../../public/error.ico";
 import moonImage from "../../public/moon.png";
 import sunImage from "../../public/sun.png";
-import { useGlobalContext } from "../../pages/_app";
+import { useGlobalContext } from "../../context/GlobalContext";
 
 export const Header = () => {
   const { isDark, pageTitle, setIsDark } = useGlobalContext();
