@@ -68,9 +68,9 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <main className='container mx-auto h-full flex flex-col justify-between pt-8 md:pt-24'>
+      <main className='container mx-auto h-full flex flex-col justify-between pt-8 md:pt-16'>
         <div>
-          <Swiper onSwiper={setSwiper} onSlideChange={handleSlideChange}>
+          <Swiper onSwiper={setSwiper} onSlideChange={handleSlideChange} noSwipingSelector="div" >
             <SwiperSlide>
               <Introduction />
             </SwiperSlide>
@@ -97,18 +97,6 @@ const Home: NextPage = () => {
         activeSlide={activeSlide}
         changeActiveSlide={changeActiveSlide}
       />
-      {/* <div className='absolute w-screen h-screen inset-0'>
-        {typeof window !== "undefined" && (
-          <Canvas style={{ backgroundColor: "none" }}>
-            <ambientLight />
-            <pointLight position={[10, 10, 10]} />
-            <Text3D font={font as any} bevelEnabled bevelSize={0.1}>
-              Projects
-              <meshStandardMaterial color={"hotpink"} />
-            </Text3D>
-          </Canvas>
-        )}
-      </div> */}
     </>
   );
 };
