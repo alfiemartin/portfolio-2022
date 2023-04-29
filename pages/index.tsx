@@ -89,14 +89,14 @@ const Home: NextPage = () => {
           getPageTitle={getPageTitle}
           swiper={swiper}
         />
+        <SlidesNav
+          showNav={showNav}
+          onMouseOver={handleNavHover}
+          onMouseLeave={handleNavLeave}
+          activeSlide={activeSlide}
+          changeActiveSlide={changeActiveSlide}
+        />
       </main>
-      <SlidesNav
-        showNav={showNav}
-        onMouseOver={handleNavHover}
-        onMouseLeave={handleNavLeave}
-        activeSlide={activeSlide}
-        changeActiveSlide={changeActiveSlide}
-      />
     </>
   );
 };

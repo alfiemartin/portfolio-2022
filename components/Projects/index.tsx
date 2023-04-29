@@ -18,7 +18,7 @@ export const ProjectCard = () => {
   return (
     <div
       onClick={() => setExpanded((expanded) => !expanded)}
-      className="bg-red-200 p-4 rounded-lg shadow-lg"
+      className="bg-red-200 p-4 rounded-lg shadow-lg cursor-pointer"
     >
       <div className="flex justify-between">
         <div>

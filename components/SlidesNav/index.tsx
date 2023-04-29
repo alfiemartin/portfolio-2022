@@ -32,7 +32,7 @@ export const SlidesNav = ({
 }: SlidesNavProps) => {
   return (
     <div
-      className={`absolute ${
+      className={`fixed ${
         showNav ? "bottom-0" : "-bottom-8"
       } transition-all ease-out duration-300 pt-8 w-full hidden lg:block z-10 container left-1/2 -translate-x-1/2`}
       onMouseOver={onMouseOver}
@@ -69,7 +69,7 @@ export const SlidesButtonNav = ({
 
   return (
     <div
-      className={`${extraClasses} w-full flex justify-between items-end p-2 sm:p-8 md:p-12 transition-opacity duration-300 z-10 lg:z-0`}
+      className={`${extraClasses} w-full container fixed bottom-0 left-1/2 -translate-x-1/2 flex justify-between items-end pb-8 transition-opacity duration-300 z-10`}
     >
       <RippleButton
         className={`${swiperButtonClasses} ${activeSlide - 1 < 0 ? "opacity-0" : "opacity-100"}`}
