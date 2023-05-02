@@ -1,3 +1,4 @@
+import { pages } from "../../pages";
 import alfieImage from "../../public/alfie-full.jpg";
 import Image from "next/image";
 

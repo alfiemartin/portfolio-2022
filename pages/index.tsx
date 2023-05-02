@@ -11,7 +11,7 @@ import { WorkExperience } from "../components/WorkExperience";
 import { SlidesButtonNav, SlidesNav } from "../components/SlidesNav";
 import "swiper/css";
 
-const pages = ['introduction', 'projects', 'work']
+export const pages = ['introduction', 'projects', 'professional-experience']
 
 const Home: NextPage = () => {
   const globalState = useGlobalContext();

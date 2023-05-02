@@ -6,7 +6,7 @@ import sunImage from "../../public/sun.png";
 import { useGlobalContext } from "../../context/GlobalContext";
 
 export const Header = () => {
-  const { isDark, pageTitle, setIsDark } = useGlobalContext();
+  const { isDark, pageTitle, setIsDark, loadedSwiper } = useGlobalContext();
 
   return (
     <header className='w-full dark:text-white'>
@@ -18,7 +18,7 @@ export const Header = () => {
             <Image src={siteLogo} layout='responsive' alt='Site Logo' />
           </picture>
         </div>
-        <div>
+        <div className={`opacity-0 transition-opacity duration-300 ease-out ${loadedSwiper && 'opacity-100'}`}>
           <h5 className='dark:text-gray-100 font-thin'>{pageTitle}</h5>
         </div>
         <div className='flex justify-end flex-1 gap-3'>

@@ -11,12 +11,12 @@ const PageTemplate = ({ children }: { children: ReactNode }) => {
       <Head>
         <title>Alfie Martin - Web Developer</title>
       </Head>
-      <div className={`opacity-0 transition-opacity duration-300 ease-out ${loadedSwiper && 'opacity-100'}`}>
         <Header />
-        <div className='main-content pt-[64px] h-[calc(100vh-100px)] overflow-hidden font-poppins px-2 sm:px-0'>{children}</div>
+      <div className={`opacity-0 transition-opacity duration-300 ease-out ${loadedSwiper && 'opacity-100'}`}>
+        <div className='main-content pt-[64px] h-[calc(100vh-100px)] overflow-scroll font-poppins px-2 sm:px-0'>{children}</div>
       </div>
     </>
-  );//overflow-scroll
+  );
 };
 
 export default PageTemplate;
