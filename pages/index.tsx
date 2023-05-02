@@ -1,4 +1,3 @@
-import * as THREE from "three";
 import React, { MouseEvent, useEffect, useRef, useState } from "react";
 import type { NextPage } from "next";
 import { Swiper, SwiperSlide } from "swiper/react";
