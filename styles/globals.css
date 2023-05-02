@@ -29,16 +29,3 @@ h5 {
 h6 {
   @apply text-xl;
 }
-
-/* body::-webkit-scrollbar {
-  width: 1em;
-}
- 
-body::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
- 
-body::-webkit-scrollbar-thumb {
-  background-color: black;
-  outline: 1px solid rgb(24, 81, 138);
-} */
