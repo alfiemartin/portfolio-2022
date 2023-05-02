@@ -5,6 +5,8 @@ interface GlobalContext {
   setPageTitle: React.Dispatch<React.SetStateAction<string>>;
   isDark: boolean | null;
   setIsDark: React.Dispatch<React.SetStateAction<boolean | null>>;
+  loadedSwiper: boolean | null;
+  setLoadedSwiper: React.Dispatch<React.SetStateAction<boolean | null>>;
 }
 
 const _GlobalContext = React.createContext<GlobalContext | null>(null);
@@ -14,6 +16,7 @@ export const useGlobalContext = () => useContext(_GlobalContext) as GlobalContex
 const GlobalContext = ({ children }: { children: ReactNode }) => {
   const [pageTitle, setPageTitle] = useState("Welcome");
   const [isDark, setIsDark] = useState<boolean | null>(null);
+  const [loadedSwiper, setLoadedSwiper] = useState<boolean | null>(null);
 
   useEffect(() => {
     setIsDark(localStorage.getItem("dark-mode") == "true");
@@ -23,16 +26,14 @@ const GlobalContext = ({ children }: { children: ReactNode }) => {
     if (isDark) {
       document.documentElement.classList.add("dark");
       localStorage.setItem("dark-mode", "true");
-      console.log("set true");
     } else if (isDark != null) {
       document.documentElement.classList.remove("dark");
       localStorage.setItem("dark-mode", "false");
-      console.log("set false");
     }
   }, [isDark]);
 
   return (
-    <_GlobalContext.Provider value={{ pageTitle, setPageTitle, isDark, setIsDark }}>
+    <_GlobalContext.Provider value={{ pageTitle, setPageTitle, isDark, setIsDark, loadedSwiper, setLoadedSwiper }}>
       {children}
     </_GlobalContext.Provider>
   );

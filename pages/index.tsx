@@ -2,6 +2,7 @@ import * as THREE from "three";
 import React, { MouseEvent, useEffect, useRef, useState } from "react";
 import type { NextPage } from "next";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { HashNavigation } from 'swiper';
 import type { Swiper as SwiperType } from "swiper/types";
 import { useGlobalContext } from "../context/GlobalContext";
 import { Introduction } from "../components/Introduction";
@@ -9,6 +10,8 @@ import { Projects } from "../components/Projects";
 import { WorkExperience } from "../components/WorkExperience";
 import { SlidesButtonNav, SlidesNav } from "../components/SlidesNav";
 import "swiper/css";
+
+const pages = ['introduction', 'projects', 'work']
 
 const Home: NextPage = () => {
   const globalState = useGlobalContext();
@@ -61,6 +64,12 @@ const Home: NextPage = () => {
   };
 
   useEffect(() => {
+    if(swiper?.activeIndex !== undefined) {
+      globalState.setLoadedSwiper(true)
+    }
+  }, [swiper?.activeIndex, globalState])
+
+  useEffect(() => {
     setTimeout(() => {
       setShowNav(false);
     }, 1500);
@@ -68,16 +77,23 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <main className='container mx-auto h-full flex flex-col justify-between pt-8 md:pt-16'>
+      <main className={`container mx-auto h-full flex flex-col justify-between pt-8 md:pt-16 opacity-0 ${swiper?.activeIndex !== undefined && 'opacity-100'}`}>
         <div>
-          <Swiper onSwiper={setSwiper} onSlideChange={handleSlideChange} noSwipingSelector="div" >
-            <SwiperSlide>
+          <Swiper
+            onSwiper={setSwiper}
+            onSlideChange={handleSlideChange}
+            spaceBetween={50}
+            noSwipingSelector="div"
+            modules={[HashNavigation]}
+            hashNavigation={{ watchState: true }}
+          >
+            <SwiperSlide data-hash={pages[0]}> 
               <Introduction />
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide data-hash={pages[1]}>
               <Projects />
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide data-hash={pages[2]}>
               <WorkExperience />
             </SwiperSlide>
           </Swiper>
