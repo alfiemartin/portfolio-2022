@@ -17,18 +17,22 @@ const Home: NextPage = () => {
   const [showNav, setShowNav] = useState(true);
   const [swiper, setSwiper] = useState<SwiperType>();
   const [activeSlide, setActiveSlide] = useState(0);
+  const [allowScroll, setAllowScroll] = useState(false);
 
   const getPageTitle = (index: number) => {
     let pageTitle: string;
 
     switch (index) {
       case 0:
+        setAllowScroll(false);
         pageTitle = "Welcome";
         break;
       case 1:
+        setAllowScroll(true);
         pageTitle = "Projects";
         break;
       case 2:
+        setAllowScroll(false);
         pageTitle = "Professional Experience";
         break;
       default:
@@ -76,7 +80,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <main className={`container mx-auto h-full flex flex-col justify-between pt-8 md:pt-16 opacity-0 ${swiper?.activeIndex !== undefined && 'opacity-100'}`}>
+      <main className={`container mx-auto h-full flex flex-col justify-between pt-8 ${allowScroll && 'overflow-y-hidden' } md:pt-10 opacity-0 ${swiper?.activeIndex !== undefined && 'opacity-100'}`}>
         <div>
           <Swiper
             onSwiper={setSwiper}
