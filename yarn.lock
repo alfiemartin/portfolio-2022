@@ -180,13 +180,6 @@
   "resolved" "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.2.tgz"
   "version" "0.16.2"
 
-"@types/tailwindcss@^3.1.0":
-  "integrity" "sha512-JxPzrm609hzvF4nmOI3StLjbBEP3WWQxDDJESqR1nh94h7gyyy3XSl0hn5RBMJ9mPudlLjtaXs5YEBtLw7CnPA=="
-  "resolved" "https://registry.npmjs.org/@types/tailwindcss/-/tailwindcss-3.1.0.tgz"
-  "version" "3.1.0"
-  dependencies:
-    "tailwindcss" "*"
-
 "@typescript-eslint/parser@^5.0.0":
   "integrity" "sha512-NGAYP/+RDM2sVfmKiKOCgJYPstAO40vPAgACoWPO/+yoYKSgAXIFaBKsV8P0Cc7fwKgvj27SjRNX4L7f4/jCKQ=="
   "resolved" "https://registry.npmjs.org/@typescript-eslint/parser/-/parser-5.15.0.tgz"
@@ -1950,7 +1943,7 @@
     "dom7" "^4.0.4"
     "ssr-window" "^4.0.2"
 
-"tailwindcss@*", "tailwindcss@^3.0.23":
+"tailwindcss@^3.0.23":
   "integrity" "sha512-+OZOV9ubyQ6oI2BXEhzw4HrqvgcARY38xv3zKcjnWtMIZstEsXdI9xftd1iB7+RbOnj2HOEzkA0OyB5BaSxPQA=="
   "resolved" "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.0.23.tgz"
   "version" "3.0.23"
