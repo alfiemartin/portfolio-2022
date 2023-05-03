@@ -180,7 +180,7 @@
   "resolved" "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.2.tgz"
   "version" "0.16.2"
 
-"@types/tailwindcss@^3.0.10":
+"@types/tailwindcss@^3.1.0":
   "integrity" "sha512-JxPzrm609hzvF4nmOI3StLjbBEP3WWQxDDJESqR1nh94h7gyyy3XSl0hn5RBMJ9mPudlLjtaXs5YEBtLw7CnPA=="
   "resolved" "https://registry.npmjs.org/@types/tailwindcss/-/tailwindcss-3.1.0.tgz"
   "version" "3.1.0"

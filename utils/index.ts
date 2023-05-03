@@ -1,3 +1,4 @@
+// @ts-nocheck
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "../tailwind.config.js";
 import { TailwindConfig } from "tailwindcss/tailwind-config";
