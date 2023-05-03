@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import Image from 'next/image';
-import chevronDown from "../../public/chevron-down.svg";
-
+import { BiChevronDown } from 'react-icons/bi'
 interface ProjectCardProps {
     title: string;
     description: string;
@@ -28,18 +26,15 @@ interface ProjectCardProps {
     return (
       <div
         onClick={() => setExpanded((expanded) => !expanded)}
-        className="bg-slate-600 text-slate-200 p-4 rounded-lg shadow-lg cursor-pointer"
+        className="bg-slate-600 border-black border-8 text-slate-200 p-4 rounded-lg shadow-lg cursor-pointer"
       >
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <div>
             <h3>{title}</h3>
             <h4 className="text-sm">{description}</h4>
           </div>
-          <Image
-            alt="chevron"
-            src={chevronDown}
-            width={50}
-            height={50}
+          <BiChevronDown
+            size={100}
             className={`transition-all duration-500 rotate-180 ${
               expanded && "rotate-0"
             }`}
