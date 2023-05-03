@@ -5,7 +5,7 @@ export const Projects = () => {
     <section >
       <h1>Projects</h1>
       <h3>Click a card to expand details</h3>
-      <div className="mt-4 flex flex-col gap-8">
+      <div className="mt-4 mb-8 flex flex-col gap-8">
         <ProjectCard
           title="Socially Distant"
           description="At the height on the COVID lockdown, me and my brother lauched a

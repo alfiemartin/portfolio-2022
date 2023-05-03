@@ -26,7 +26,7 @@ interface ProjectCardProps {
     return (
       <div
         onClick={() => setExpanded((expanded) => !expanded)}
-        className="bg-slate-600 border-black border-8 text-slate-200 p-4 rounded-lg shadow-lg cursor-pointer"
+        className="bg-slate-600 border-black border-8 text-slate-200 p-4 py-2 rounded-lg shadow-lg cursor-pointer"
       >
         <div className="flex justify-between items-center">
           <div>
