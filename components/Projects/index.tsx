@@ -2,7 +2,7 @@ import { ProjectCard } from "../ProjectCard/ProjectCard";
 
 export const Projects = () => {
   return (
-    <section >
+    <section className="px-4">
       <h1>Projects</h1>
       <h3>Click a card to expand details</h3>
       <div className="mt-4 mb-8 flex flex-col gap-8">

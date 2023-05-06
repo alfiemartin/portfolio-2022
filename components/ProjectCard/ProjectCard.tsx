@@ -15,6 +15,15 @@ export const ProjectCard = ({ content, title }: ProjectCardProps) => {
     null
   );
   const [hovered, setHovered] = useState(false);
+  const [tapped, setTapped] = useState(false);
+
+  useEffect(() => {
+    setTapped(true);
+
+    setTimeout(() => {
+      setTapped(false);
+    }, 100)
+  }, [expanded])
 
   useEffect(() => {
     if (innerSection.current?.scrollHeight) {
@@ -24,7 +33,7 @@ export const ProjectCard = ({ content, title }: ProjectCardProps) => {
 
   return (
     <div
-      className="border-black border-x-8 border-y-[10px] shadow-lg group"
+      className="border-black border-x-8 border-y-[10px] shadow-lg shadow-slate-600 group max-w-5xl"
       onClick={() => setExpanded((expanded) => !expanded)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -53,13 +62,14 @@ export const ProjectCard = ({ content, title }: ProjectCardProps) => {
             <BiChevronDown size={100} />
           </motion.div>
         </div>
-        <div
+        <motion.div
+          animate={{ maxHeight: expanded ? `${innerSectionHeight}px` : '0px' }}
+          transition={{ duration: 0.5, type: "spring" }}
           ref={innerSection}
-          style={expanded ? { maxHeight: `${innerSectionHeight}px` } : {}}
-          className="overflow-hidden max-h-0 transition-all duration-500"
+          className="overflow-hidden"
         >
           <div className="mt-4">{content}</div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

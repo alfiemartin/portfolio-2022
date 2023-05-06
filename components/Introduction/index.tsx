@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export const Introduction = () => {
   return (
-    <section className='flex justify-center items-start md:items-center'>
+    <section className='px-4 flex justify-center items-start md:items-center'>
       <div className='flex gap-4 w-full flex-col-reverse justify-center md:flex-row'>
         <div className='w-full md:max-w-xl p-2 bg-black shadow-lg overflow-hidden'>
           <Image

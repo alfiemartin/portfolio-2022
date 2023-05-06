@@ -37,9 +37,9 @@ const WorkButton = ({
       onMouseMove={getPosition}
       onMouseEnter={() => setInButton(true)}
       onMouseLeave={() => setInButton(false)}
-      className={`p-4 bg-blue-400 shadow-xl transition-all duration-200 ${classes}`}
+      className={`shadow-xl border-black border-y-[6px] border-x-[7px] ${classes}`}
     >
-      <div className="rounded">{title}</div>
+      <div className="bg-slate-600 block text-slate-200 p-2 scale-[1.02] rounded cursor-pointer">{title}</div>
     </button>
   );
 };
@@ -53,7 +53,7 @@ export const WorkExperience = () => {
   }, [positions]);
 
   return (
-    <div>
+    <section className="px-4">
       <h1>Professional Experience</h1>
       <div
         className="mt-10 flex flex-col gap-8 px-4"
@@ -78,14 +78,12 @@ export const WorkExperience = () => {
             />
           </div>
           <motion.div
-            className={`bg-blue-200 shadow-lg flex-grow duration-200 transition-opacity opacity-0 ${
-              inButton && "opacity-100"
-            }`}
-            animate={{ x: positions.x * 10, y: positions.y * 10 }}
+            className="bg-slate-600 shadow-lg shadow-slate-600 flex-grow"
+            animate={{ x: positions.x * 10, y: positions.y * 10, opacity: inButton ? 100 : 0 }}
             transition={{ type: "tween" }}
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
