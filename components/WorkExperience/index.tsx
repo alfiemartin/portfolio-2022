@@ -39,9 +39,7 @@ const WorkButton = ({
       onMouseLeave={() => setInButton(false)}
       className={`p-4 bg-blue-400 shadow-xl transition-all duration-200 ${classes}`}
     >
-      <div className="rounded">
-        {title}
-      </div>
+      <div className="rounded">{title}</div>
     </button>
   );
 };

@@ -46,13 +46,11 @@ export const ProjectCard = ({ content, title }: ProjectCardProps) => {
               {title}
             </motion.h4>
           </div>
-          <motion.div 
+          <motion.div
             animate={{ rotate: expanded ? 180 : 0 }}
-            transition={{ duration: 0.5, type: 'spring' }}
+            transition={{ duration: 0.5, type: "spring" }}
           >
-            <BiChevronDown
-              size={100}
-            />
+            <BiChevronDown size={100} />
           </motion.div>
         </div>
         <div

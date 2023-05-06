@@ -1,6 +1,6 @@
 import Swiper from "swiper";
 import RippleButton from "../RippleButton";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { useBreakpoints } from "../../hooks/useBreakpoints";
 
 export type SlidesNavProps = {
@@ -34,7 +34,7 @@ export const SlidesNav = ({
     <div
       className={`fixed ${
         showNav ? "bottom-0" : "-bottom-8"
-      } transition-all ease-out duration-300 pt-8 w-full hidden lg:block z-20 container left-1/2 -translate-x-1/2`}
+      } transition-all ease-out duration-300 pt-4 w-full hidden lg:block z-20 container left-1/2 -translate-x-1/2`}
       onMouseOver={onMouseOver}
       onMouseLeave={onMouseLeave}
     >
@@ -75,7 +75,7 @@ export const SlidesButtonNav = ({
         className={`${swiperButtonClasses} ${activeSlide - 1 < 0 ? "opacity-0" : "opacity-100"}`}
         onClick={() => changeActiveSlide(activeSlide - 1)}
       >
-        <FaAngleLeft className='inline-block mr-2 text-xl text-gray-100 dark:text-gray-900 relative top-[-1px]' />
+        <BiChevronLeft className='inline-block mr-2 text-xl text-gray-100 dark:text-gray-900 relative top-[-1px]' />
         {breakpoint !== "xs" && getPageTitle(activeSlide - 1)}
       </RippleButton>
       <RippleButton
@@ -85,7 +85,7 @@ export const SlidesButtonNav = ({
         onClick={() => changeActiveSlide(activeSlide + 1)}
       >
         {breakpoint !== "xs" && getPageTitle(activeSlide + 1)}
-        <FaAngleRight className='inline-block ml-2 text-xl text-gray-100 dark:text-gray-900 relative top-[-1px]' />
+        <BiChevronRight className='inline-block ml-2 text-xl text-gray-100 dark:text-gray-900 relative top-[-1px]' />
       </RippleButton>
     </div>
   );
