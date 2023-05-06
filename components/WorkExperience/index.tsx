@@ -5,7 +5,7 @@ import {
   MouseEventHandler,
   useEffect,
 } from "react";
-import { motion, useMotionValue, useVelocity } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface WorkButtonProps {
   title: string;
@@ -37,9 +37,11 @@ const WorkButton = ({
       onMouseMove={getPosition}
       onMouseEnter={() => setInButton(true)}
       onMouseLeave={() => setInButton(false)}
-      className={`p-4 bg-blue-400 rounded-lg shadow-xl transition-all duration-200 outline outline-0 hover:outline-2 outline-blue-700 ${classes}`}
+      className={`p-4 bg-blue-400 shadow-xl transition-all duration-200 ${classes}`}
     >
-      {title}
+      <div className="rounded">
+        {title}
+      </div>
     </button>
   );
 };
@@ -55,7 +57,10 @@ export const WorkExperience = () => {
   return (
     <div>
       <h1>Professional Experience</h1>
-      <div className="mt-10 flex flex-col gap-8 px-4">
+      <div
+        className="mt-10 flex flex-col gap-8 px-4"
+        style={{ perspective: "1000px", transformOrigin: "50px 150px -100px" }}
+      >
         <div className="flex h-[calc(100vh-350px)] gap-8">
           <div className="flex flex-col justify-between">
             <WorkButton
