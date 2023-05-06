@@ -4,8 +4,8 @@ import tailwindConfig from "../tailwind.config.js";
 export type Breakpoint = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
 export const getBreakpoints = () => {
-  const fullConfig = resolveConfig(tailwindConfig);
-  return fullConfig.theme.screens as unknown as Record<string, string>;
+  const fullConfig = resolveConfig(tailwindConfig as any);
+  return (fullConfig.theme as any).screens as unknown as Record<string, string>;
 };
 
 export const getCurrentBreakpoint = () => {
