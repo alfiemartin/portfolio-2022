@@ -6,6 +6,7 @@ import {
   useEffect,
 } from "react";
 import { motion } from "framer-motion";
+import { SlideTemplate } from "../Foundations";
 
 interface WorkButtonProps {
   title: string;
@@ -53,11 +54,10 @@ export const WorkExperience = () => {
   }, [positions]);
 
   return (
-    <section className="px-4">
+    <SlideTemplate>
       <h1>Professional Experience</h1>
       <div
-        className="mt-10 flex flex-col gap-8 px-4"
-        style={{ perspective: "1000px", transformOrigin: "50px 150px -100px" }}
+        className="mt-10 flex flex-col gap-8"
       >
         <div className="flex h-[calc(100vh-350px)] gap-8">
           <div className="flex flex-col justify-between">
@@ -84,6 +84,6 @@ export const WorkExperience = () => {
           />
         </div>
       </div>
-    </section>
+    </SlideTemplate>
   );
 };

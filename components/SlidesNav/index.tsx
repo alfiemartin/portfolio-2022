@@ -34,11 +34,11 @@ export const SlidesNav = ({
     <div
       className={`fixed ${
         showNav ? "bottom-0" : "-bottom-8"
-      } transition-all ease-out duration-300 pt-4 w-full hidden lg:block z-20 container left-1/2 -translate-x-1/2`}
+      } transition-all ease-out duration-300 pt-4 w-[calc(100%-8px)] hidden lg:block z-20 container left-1/2 -translate-x-1/2`}
       onMouseOver={onMouseOver}
       onMouseLeave={onMouseLeave}
     >
-      <div className='bg-gradient-to-t from-gray-800 to-gray-700 dark:from-gray-700 dark:to-gray-600 text-gray-100 rounded-t-lg h-12 grid place-items-center'>
+      <div className='mx-4 bg-gradient-to-t from-gray-800 to-gray-700 dark:from-gray-700 dark:to-gray-600 text-gray-100 rounded-t-lg h-12 grid place-items-center'>
         <ul className={`flex justify-center gap-20 shadow-inner`}>
           {slideNames.map((slide, i) => (
             <li key={i}>
@@ -69,24 +69,26 @@ export const SlidesButtonNav = ({
 
   return (
     <div
-      className={`${extraClasses} w-full container fixed bottom-0 left-1/2 -translate-x-1/2 flex justify-between items-end pb-8 transition-opacity duration-300 z-20`}
+      className={`${extraClasses} w-full container fixed bottom-0 left-1/2 -translate-x-1/2 pb-8 transition-opacity duration-300 z-20`}
     >
-      <RippleButton
-        className={`${swiperButtonClasses} ${activeSlide - 1 < 0 ? "opacity-0" : "opacity-100"}`}
-        onClick={() => changeActiveSlide(activeSlide - 1)}
-      >
-        <BiChevronLeft className='inline-block mr-2 text-xl text-gray-100 dark:text-gray-900 relative top-[-1px]' />
-        {breakpoint !== "xs" && getPageTitle(activeSlide - 1)}
-      </RippleButton>
-      <RippleButton
-        className={`${swiperButtonClasses} ${
-          swiper && activeSlide + 1 > swiper.slides?.length - 1 ? "opacity-0" : "opacity-100"
-        }`}
-        onClick={() => changeActiveSlide(activeSlide + 1)}
-      >
-        {breakpoint !== "xs" && getPageTitle(activeSlide + 1)}
-        <BiChevronRight className='inline-block ml-2 text-xl text-gray-100 dark:text-gray-900 relative top-[-1px]' />
-      </RippleButton>
+      <div className="mx-4 flex justify-between items-end">
+        <RippleButton
+          className={`${swiperButtonClasses} ${activeSlide - 1 < 0 ? "opacity-0" : "opacity-100"}`}
+          onClick={() => changeActiveSlide(activeSlide - 1)}
+        >
+          <BiChevronLeft className='inline-block mr-2 text-xl text-gray-100 dark:text-gray-900 relative top-[-1px]' />
+          {breakpoint !== "xs" && getPageTitle(activeSlide - 1)}
+        </RippleButton>
+        <RippleButton
+          className={`${swiperButtonClasses} ${
+            swiper && activeSlide + 1 > swiper.slides?.length - 1 ? "opacity-0" : "opacity-100"
+          }`}
+          onClick={() => changeActiveSlide(activeSlide + 1)}
+        >
+          {breakpoint !== "xs" && getPageTitle(activeSlide + 1)}
+          <BiChevronRight className='inline-block ml-2 text-xl text-gray-100 dark:text-gray-900 relative top-[-1px]' />
+        </RippleButton>
+      </div>
     </div>
   );
 };

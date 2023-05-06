@@ -1,10 +1,10 @@
-import { pages } from "../../pages";
 import alfieImage from "../../public/alfie-full.jpg";
 import Image from "next/image";
+import { SlideTemplate } from "../Foundations";
 
 export const Introduction = () => {
   return (
-    <section className='px-4 flex justify-center items-start md:items-center'>
+    <SlideTemplate className='flex justify-center items-start md:items-center'>
       <div className='flex gap-4 w-full flex-col-reverse justify-center md:flex-row'>
         <div className='w-full md:max-w-xl p-2 bg-black shadow-lg overflow-hidden'>
           <Image
@@ -21,6 +21,6 @@ export const Introduction = () => {
           <h5 className=''>Check out what i&apos;ve been doing ➡️</h5>
         </div>
       </div>
-    </section>
+    </SlideTemplate>
   );
 };

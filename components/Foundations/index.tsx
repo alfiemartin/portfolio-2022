@@ -26,4 +26,15 @@ const PageTemplate = ({ children }: { children: ReactNode }) => {
   );
 };
 
+interface SlideTemplateProps {
+  className?: string;
+}
+
+const SlideTemplate: React.FC<SlideTemplateProps> = ({ children, className }) => (
+  <section className={`px-4 ${className}`}>
+    {children}
+  </section>
+)
+
 export default PageTemplate;
+export { SlideTemplate };

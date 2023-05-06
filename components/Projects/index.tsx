@@ -1,8 +1,9 @@
+import { SlideTemplate } from "../Foundations";
 import { ProjectCard } from "../ProjectCard/ProjectCard";
 
 export const Projects = () => {
   return (
-    <section className="px-4">
+    <SlideTemplate>
       <h1>Projects</h1>
       <h3>Click a card to expand details</h3>
       <div className="mt-4 mb-8 flex flex-col gap-8">
@@ -41,6 +42,6 @@ export const Projects = () => {
           content={<div></div>}
         />
       </div>
-    </section>
+    </SlideTemplate>
   );
 };
