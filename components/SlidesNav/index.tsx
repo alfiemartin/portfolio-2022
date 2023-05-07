@@ -2,6 +2,7 @@ import Swiper from "swiper";
 import RippleButton from "../RippleButton";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { useBreakpoints } from "../../hooks/useBreakpoints";
+import { motion } from 'framer-motion';
 
 export type SlidesNavProps = {
   showNav: boolean;
@@ -20,8 +21,6 @@ export type SlidesButtonNavProps = {
 };
 
 const slideNames = ["Welcome", "Projects", "Professional Experience"];
-export const swiperButtonClasses =
-  "py-2 px-6 bg-gray-800 text-white dark:text-black dark:bg-gray-200 hover:bg-gray-700 dark:hover:bg-gray-300 transition-all";
 
 export const SlidesNav = ({
   showNav,
@@ -38,18 +37,19 @@ export const SlidesNav = ({
       onMouseOver={onMouseOver}
       onMouseLeave={onMouseLeave}
     >
-      <div className='mx-4 bg-gradient-to-t from-gray-800 to-gray-700 dark:from-gray-700 dark:to-gray-600 text-gray-100 rounded-t-lg h-12 grid place-items-center'>
+      <div className='mx-4 bg-gradient-to-t from-slate-800 to-slate-700 dark:from-slate-700 dark:to-slate-600 rounded-t-lg h-12 grid place-items-center'>
         <ul className={`flex justify-center gap-20 shadow-inner`}>
           {slideNames.map((slide, i) => (
             <li key={i}>
-              <button
-                className={`hover:text-gray-100 hover:underline ${
-                  activeSlide === i ? "underline" : "text-gray-300"
+              <motion.button
+                whileHover={{ textDecoration: 'underline', translateY: '-2px' }}
+                className={`text-slate-200 ${
+                  activeSlide === i ? "underline" : ""
                 }`}
                 onClick={() => changeActiveSlide(i)}
               >
                 {slide}
-              </button>
+              </motion.button>
             </li>
           ))}
         </ul>
@@ -66,6 +66,8 @@ export const SlidesButtonNav = ({
   className: extraClasses,
 }: SlidesButtonNavProps) => {
   const breakpoint = useBreakpoints();
+  const swiperButtonClasses = "py-2 px-6 bg-slate-800 flex gap-2 items-center text-slate-200 dark:text-slate-800 dark:bg-slate-200 hover:bg-slate-700 dark:hover:bg-slate-300 transition-all";
+  const swiperIconClasses = "inline-block text-xl fill-slate-200 dark:fill-slate-900 relative top-[-1px]"
 
   return (
     <div
@@ -76,7 +78,7 @@ export const SlidesButtonNav = ({
           className={`${swiperButtonClasses} ${activeSlide - 1 < 0 ? "opacity-0" : "opacity-100"}`}
           onClick={() => changeActiveSlide(activeSlide - 1)}
         >
-          <BiChevronLeft className='inline-block mr-2 text-xl text-gray-100 dark:text-gray-900 relative top-[-1px]' />
+          <BiChevronLeft size={25} className={swiperIconClasses} />
           {breakpoint !== "xs" && getPageTitle(activeSlide - 1)}
         </RippleButton>
         <RippleButton
@@ -86,7 +88,7 @@ export const SlidesButtonNav = ({
           onClick={() => changeActiveSlide(activeSlide + 1)}
         >
           {breakpoint !== "xs" && getPageTitle(activeSlide + 1)}
-          <BiChevronRight className='inline-block ml-2 text-xl text-gray-100 dark:text-gray-900 relative top-[-1px]' />
+          <BiChevronRight size={25} className={swiperIconClasses} />
         </RippleButton>
       </div>
     </div>

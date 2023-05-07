@@ -15,15 +15,15 @@ export const ProjectCard = ({ content, title }: ProjectCardProps) => {
     null
   );
   const [hovered, setHovered] = useState(false);
-  const [tapped, setTapped] = useState(false);
 
-  useEffect(() => {
-    setTapped(true);
+  // const [tapped, setTapped] = useState(false);
+  // useEffect(() => {
+  //   setTapped(true);
 
-    setTimeout(() => {
-      setTapped(false);
-    }, 100)
-  }, [expanded])
+  //   setTimeout(() => {
+  //     setTapped(false);
+  //   }, 100)
+  // }, [expanded])
 
   useEffect(() => {
     if (innerSection.current?.scrollHeight) {
@@ -33,24 +33,25 @@ export const ProjectCard = ({ content, title }: ProjectCardProps) => {
 
   return (
     <div
-      className="border-black border-x-8 border-y-[10px] shadow-lg shadow-slate-600 group max-w-5xl"
+      className="border-black border-x-8 border-y-[10px] shadow-default group max-w-5xl"
       onClick={() => setExpanded((expanded) => !expanded)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="bg-slate-600 text-slate-200 p-4 py-2 rounded scale-y-105 cursor-pointer">
+      <div className="bg-slate-600 p-4 py-2 rounded scale-y-105 cursor-pointer">
         <div className="flex justify-between items-center">
-          <div>
+          <div className="text-slate-200">
             <motion.h3
               animate={{ scale: hovered ? 1.02 : 1.0 }}
               transition={{ type: "spring" }}
+              className="text-inherit"
             >
               {title}
             </motion.h3>
             <motion.h4
-              className="text-sm"
               animate={{ scale: hovered ? 1.02 : 1.0 }}
               transition={{ type: "spring", delay: 0.08 }}
+              className="text-sm text-inherit"
             >
               {title}
             </motion.h4>
@@ -59,7 +60,7 @@ export const ProjectCard = ({ content, title }: ProjectCardProps) => {
             animate={{ rotate: expanded ? 180 : 0 }}
             transition={{ duration: 0.5, type: "spring" }}
           >
-            <BiChevronDown size={100} />
+            <BiChevronDown className="fill-slate-200" size={100} />
           </motion.div>
         </div>
         <motion.div

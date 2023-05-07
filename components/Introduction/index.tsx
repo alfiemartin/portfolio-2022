@@ -6,7 +6,7 @@ export const Introduction = () => {
   return (
     <SlideTemplate className='flex justify-center items-start md:items-center'>
       <div className='flex gap-4 w-full flex-col-reverse justify-center md:flex-row'>
-        <div className='w-full md:max-w-xl p-2 bg-black shadow-lg overflow-hidden'>
+        <div className='w-full md:max-w-xl p-2 bg-black shadow-default overflow-hidden'>
           <Image
             src={alfieImage}
             layout='responsive'

@@ -9,9 +9,9 @@ export const Header = () => {
   const { isDark, pageTitle, setIsDark, loadedSwiper } = useGlobalContext();
 
   return (
-    <header className='w-full dark:text-white'>
+    <header className='w-full'>
       <nav
-        className={`flex items-center bg-gray-300 dark:bg-gray-900 fixed w-full z-10 shadow-md p-3`}
+        className={`flex items-center bg-slate-300 dark:bg-slate-900 fixed w-full z-10 shadow-md p-3`}
       >
         <div className='flex flex-1 items-center'>
           <picture className='w-[40px] mr-3'>
@@ -19,12 +19,13 @@ export const Header = () => {
           </picture>
         </div>
         <div className={`opacity-0 transition-opacity duration-300 ease-out ${loadedSwiper && 'opacity-100'}`}>
-          <h5 className='dark:text-gray-100 font-thin'>{pageTitle}</h5>
+          <h5 className='font-thin'>{pageTitle}</h5>
         </div>
         <div className='flex justify-end flex-1 gap-3'>
           <ul className='flex gap-3'></ul>
           <ReactSwitch
             onChange={() => setIsDark((prev) => !prev)}
+            onColor="#2693e6"
             checked={isDark ?? false}
             checkedHandleIcon={Checked}
             uncheckedHandleIcon={Unchecked}

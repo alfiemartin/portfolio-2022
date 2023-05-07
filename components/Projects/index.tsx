@@ -4,8 +4,7 @@ import { ProjectCard } from "../ProjectCard/ProjectCard";
 export const Projects = () => {
   return (
     <SlideTemplate>
-      <h1>Projects</h1>
-      <h3>Click a card to expand details</h3>
+      <h1 className="mb-6">Projects</h1>
       <div className="mt-4 mb-8 flex flex-col gap-8">
         <ProjectCard
           title="Socially Distant"
@@ -21,7 +20,6 @@ export const Projects = () => {
         />
         <div className="mt-8">
           <h3>&apos;Older Projects&apos;</h3>
-          <h6>Basically not impressive</h6>
         </div>
         <ProjectCard
           title="Previous Portfolios"
