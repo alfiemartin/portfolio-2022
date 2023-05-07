@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.shadow-default {
-  @apply shadow-md shadow-slate-600 dark:shadow-slate-900;
+@layer utilities {
+  .shadow-default {
+    @apply shadow-sm shadow-slate-600 dark:shadow-slate-900;
+  }
 }
 
 * {

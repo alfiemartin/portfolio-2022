@@ -33,7 +33,7 @@ const WorkButton = ({
 
   return (
     <div>
-      <p className="mb-4 text-slate-400">{date}</p>
+      <p className="mb-4 text-slate-400 dark:text-slate-900">{date}</p>
       <button
         {...getPositions}
         onMouseEnter={() => {
