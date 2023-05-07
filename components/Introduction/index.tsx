@@ -1,7 +1,6 @@
 import alfieImage from "../../public/alfie-full.jpg";
 import Image from "next/image";
 import { SlideTemplate } from "../Foundations";
-import { motion } from 'framer-motion'
 
 export const Introduction = () => {
   return (

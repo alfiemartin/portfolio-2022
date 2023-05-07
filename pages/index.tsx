@@ -9,8 +9,9 @@ import { Projects } from "../components/Projects";
 import { WorkExperience } from "../components/WorkExperience";
 import { SlidesButtonNav, SlidesNav } from "../components/SlidesNav";
 import "swiper/css";
+import { Contact } from "../components/Contact";
 
-export const pages = ['introduction', 'projects', 'professional-experience']
+export const pages = ['introduction', 'projects', 'professional-experience', 'contact']
 
 const Home: NextPage = () => {
   const globalState = useGlobalContext();
@@ -34,6 +35,10 @@ const Home: NextPage = () => {
       case 2:
         setAllowScroll(false);
         pageTitle = "Professional Experience";
+        break;
+      case 3:
+        setAllowScroll(false);
+        pageTitle = "Contact";
         break;
       default:
         pageTitle = globalState.pageTitle ?? "";
@@ -99,6 +104,9 @@ const Home: NextPage = () => {
             </SwiperSlide>
             <SwiperSlide data-hash={pages[2]}>
               <WorkExperience />
+            </SwiperSlide>
+            <SwiperSlide data-hash={pages[3]}>
+              <Contact />
             </SwiperSlide>
           </Swiper>
         </div>

@@ -20,7 +20,7 @@ export type SlidesButtonNavProps = {
   className?: string;
 };
 
-const slideNames = ["Welcome", "Projects", "Professional Experience"];
+const slideNames = ["Welcome", "Projects", "Professional Experience", "Contact"];
 
 export const SlidesNav = ({
   showNav,
