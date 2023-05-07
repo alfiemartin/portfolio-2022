@@ -16,7 +16,7 @@ const IReact = ({ size = 50 }: { size?: number }) => {
     <motion.div
       style={{ rotateZ: 0 }}
       whileHover={{ rotateZ: 360 }}
-      transition={{ duration: 1, type: "spring" }}
+      transition={{ type: "spring" }}
     >
       <SiReact size={size} />
     </motion.div>

@@ -22,15 +22,6 @@ export const ProjectCard = ({
   );
   const [hovered, setHovered] = useState(false);
 
-  // const [tapped, setTapped] = useState(false);
-  // useEffect(() => {
-  //   setTapped(true);
-
-  //   setTimeout(() => {
-  //     setTapped(false);
-  //   }, 100)
-  // }, [expanded])
-
   useEffect(() => {
     if (innerSection.current?.scrollHeight) {
       setInnerSectionHeight(innerSection.current.scrollHeight);

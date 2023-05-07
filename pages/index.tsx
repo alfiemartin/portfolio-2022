@@ -37,6 +37,7 @@ const Home: NextPage = () => {
         break;
       default:
         pageTitle = globalState.pageTitle ?? "";
+        //TODO
     }
 
     return pageTitle;
