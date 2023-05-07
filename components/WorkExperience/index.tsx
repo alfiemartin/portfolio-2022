@@ -2,12 +2,11 @@ import {
   Dispatch,
   SetStateAction,
   useState,
-  MouseEventHandler,
   useEffect,
-  MouseEvent,
 } from "react";
 import { motion } from "framer-motion";
 import { SlideTemplate } from "../Foundations";
+import { useMousePositionInElement } from "../../hooks/useMousePositions";
 
 interface WorkButtonProps {
   title: string;
@@ -18,27 +17,6 @@ interface WorkButtonProps {
   classes?: string;
 }
 
-const useMousePositionInElement = (): [
-  { x: number; y: number },
-  { onMouseMove: (e: MouseEvent) => void }
-] => {
-  const [positions, setPositions] = useState({ x: 0, y: 0 });
-
-  const getPositions = (e: MouseEvent) => {
-    const positionX = e.nativeEvent.offsetX;
-    const positionY = e.nativeEvent.offsetY;
-    const width = (e.target as HTMLElement).clientWidth;
-    const height = (e.target as HTMLElement).clientHeight;
-
-    const percentX = (width - 2 * positionX) / width;
-    const percentY = (height - 2 * positionY) / height;
-
-    setPositions({ x: percentX, y: percentY });
-  };
-
-  return [positions, { onMouseMove: (e) => getPositions(e) }];
-};
-
 const WorkButton = ({
   title,
   setPositions,
@@ -48,7 +26,10 @@ const WorkButton = ({
   date,
 }: WorkButtonProps) => {
   const [positions, getPositions] = useMousePositionInElement();
-  setPositions(positions);
+
+  useEffect(() => {
+    setPositions(positions);
+  }, [positions, setPositions])
 
   return (
     <div>
@@ -77,10 +58,6 @@ export const WorkExperience = () => {
     null
   );
 
-  useEffect(() => {
-    console.log(positions);
-  }, [positions]);
-
   return (
     <SlideTemplate>
       <h1>Professional Experience</h1>
@@ -103,7 +80,7 @@ export const WorkExperience = () => {
                 setPositions={setPositions}
                 setSelectedExperience={setSelectedExperience}
                 title="Remarkable Commerce"
-                date="August 2021"
+                date="May 2021"
               />
               <WorkButton
                 setInButton={setInButton}
