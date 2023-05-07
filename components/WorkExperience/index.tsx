@@ -4,6 +4,7 @@ import {
   useState,
   MouseEventHandler,
   useEffect,
+  MouseEvent,
 } from "react";
 import { motion } from "framer-motion";
 import { SlideTemplate } from "../Foundations";
@@ -17,6 +18,27 @@ interface WorkButtonProps {
   classes?: string;
 }
 
+const useMousePositionInElement = (): [
+  { x: number; y: number },
+  { onMouseMove: (e: MouseEvent) => void }
+] => {
+  const [positions, setPositions] = useState({ x: 0, y: 0 });
+
+  const getPositions = (e: MouseEvent) => {
+    const positionX = e.nativeEvent.offsetX;
+    const positionY = e.nativeEvent.offsetY;
+    const width = (e.target as HTMLElement).clientWidth;
+    const height = (e.target as HTMLElement).clientHeight;
+
+    const percentX = (width - 2 * positionX) / width;
+    const percentY = (height - 2 * positionY) / height;
+
+    setPositions({ x: percentX, y: percentY });
+  };
+
+  return [positions, { onMouseMove: (e) => getPositions(e) }];
+};
+
 const WorkButton = ({
   title,
   setPositions,
@@ -25,23 +47,14 @@ const WorkButton = ({
   classes,
   date,
 }: WorkButtonProps) => {
-  const getPosition: MouseEventHandler<HTMLButtonElement> = (e) => {
-    const positionX = e.nativeEvent.offsetX;
-    const positionY = e.nativeEvent.offsetY;
-    const width = (e.target as HTMLButtonElement).clientWidth;
-    const height = (e.target as HTMLButtonElement).clientHeight;
-
-    const percentX = (width - 2 * positionX) / width;
-    const percentY = (height - 2 * positionY) / height;
-
-    setPositions({ x: percentX, y: percentY });
-  };
+  const [positions, getPositions] = useMousePositionInElement();
+  setPositions(positions);
 
   return (
     <div>
       <p className="mb-4 text-slate-400">{date}</p>
       <button
-        onMouseMove={getPosition}
+        {...getPositions}
         onMouseEnter={() => {
           setSelectedExperience(title);
           setInButton(true);
@@ -102,7 +115,7 @@ export const WorkExperience = () => {
             </div>
           </div>
           <motion.div
-            className="bg-slate-600 shadow-default flex-grow p-4"
+            className="shadow-default flex-grow border-black border-x-[11px] border-y-[10px]"
             animate={{
               x: positions.x * 10,
               y: positions.y * 10,
@@ -110,7 +123,9 @@ export const WorkExperience = () => {
             }}
             transition={{ type: "tween" }}
           >
-            <h3>{selectedExperience}</h3>
+            <div className="bg-slate-600 p-4 py-2 rounded scale-[1.01] h-full">
+              <h3>{selectedExperience}</h3>
+            </div>
           </motion.div>
         </div>
       </div>
