@@ -1,5 +1,10 @@
 import React, { ReactNode, useContext, useEffect, useState } from "react";
 
+interface IModal {
+  show: boolean;
+  render?: JSX.Element;
+}
+
 interface GlobalContext {
   pageTitle: string;
   setPageTitle: React.Dispatch<React.SetStateAction<string>>;
@@ -7,6 +12,8 @@ interface GlobalContext {
   setIsDark: React.Dispatch<React.SetStateAction<boolean | null>>;
   loadedSwiper: boolean | null;
   setLoadedSwiper: React.Dispatch<React.SetStateAction<boolean | null>>;
+  modal: IModal;
+  setModal: React.Dispatch<React.SetStateAction<IModal>>;
 }
 
 const _GlobalContext = React.createContext<GlobalContext | null>(null);
@@ -18,6 +25,7 @@ const GlobalContext = ({ children }: { children: ReactNode }) => {
   const [pageTitle, setPageTitle] = useState("Welcome");
   const [isDark, setIsDark] = useState<boolean | null>(null);
   const [loadedSwiper, setLoadedSwiper] = useState<boolean | null>(null);
+  const [modal, setModal] = useState<IModal>({ show: false, render: <></> });
 
   const state = {
     pageTitle,
@@ -26,6 +34,8 @@ const GlobalContext = ({ children }: { children: ReactNode }) => {
     setIsDark,
     loadedSwiper,
     setLoadedSwiper,
+    modal,
+    setModal
   };
 
   useEffect(() => {

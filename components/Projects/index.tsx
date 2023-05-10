@@ -23,6 +23,20 @@ const IReact = ({ size = 50 }: { size?: number }) => {
   );
 };
 
+const ITypescript = ({ size = 50 }: { size?: number }) => {
+  return (
+    <motion.div
+      style={{ rotateZ: 0 }}
+      initial={{ translateX: 0, pointerEvents: 'all' }}
+      whileHover={{ translateX: [0, 50, -50], pointerEvents: ['all', 'none', 'none'] }}
+      transition={{ type: "spring" }}
+    >
+      <SiTypescript size={size} />
+    </motion.div>
+  );
+};
+
+
 export const Projects = () => {
   return (
     <SlideTemplate>
@@ -35,7 +49,7 @@ export const Projects = () => {
           content={<div></div>}
           icons={[
             <IReact key={"1"} size={50} />,
-            <SiTypescript key={"2"} size={50} />,
+            <ITypescript key={"2"} size={50} />,
             <SiMongodb key={"3"} size={50} />,
             <SiExpress key={"4"} size={50} />,
             <SiGraphql key={"5"} size={50} />,

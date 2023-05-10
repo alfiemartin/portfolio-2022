@@ -32,7 +32,7 @@ export const Contact = () => {
             <SiGithub {...iconProps} />
             <a
               className="col-span-3 flex justify-start items-center"
-              href="https://www.linkedin.com/in/alfie-martin99/"
+              href="https://github.com/alfiemartin"
             >
               github.com/alfiemartin
             </a>

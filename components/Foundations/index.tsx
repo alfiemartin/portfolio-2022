@@ -2,9 +2,14 @@ import Head from "next/head";
 import React, { ReactNode } from "react";
 import { Header } from "../Header";
 import { useGlobalContext } from "../../context/GlobalContext";
+import { Modal } from "../Modal";
 
 const PageTemplate = ({ children }: { children: ReactNode }) => {
-  const { loadedSwiper } = useGlobalContext();
+  const { loadedSwiper, modal, setModal } = useGlobalContext();
+
+  const hideModal = () => {
+    setModal(modal =>  ({ ...modal, show: false }));
+  }
 
   return (
     <>
@@ -22,6 +27,7 @@ const PageTemplate = ({ children }: { children: ReactNode }) => {
           <div className="absolute w-full h-8 container bottom-0 left-1/2 -translate-x-1/2 z-10 bg-gradient-to-b from-transparent dark:to-slate-800 to-slate-200"></div>
         </div>
       </div>
+      <Modal show={modal.show} hideModal={hideModal} >{modal.render}</Modal>
     </>
   );
 };
@@ -30,11 +36,10 @@ interface SlideTemplateProps {
   className?: string;
 }
 
-const SlideTemplate: React.FC<SlideTemplateProps> = ({ children, className }) => (
-  <section className={`px-4 ${className}`}>
-    {children}
-  </section>
-)
+const SlideTemplate: React.FC<SlideTemplateProps> = ({
+  children,
+  className,
+}) => <section className={`px-4 ${className}`}>{children}</section>;
 
 export default PageTemplate;
 export { SlideTemplate };

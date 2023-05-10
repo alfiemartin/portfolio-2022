@@ -36,7 +36,7 @@ export const ProjectCard = ({
       onMouseLeave={() => setHovered(false)}
     >
       <div className="bg-slate-600 p-4 py-2 rounded scale-y-[1.01] scale-x-[1.005] cursor-pointer">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between">
           <div className="text-slate-200">
             <h3 className="text-inherit">{title}</h3>
             <h4 className="text-sm text-inherit">{description}</h4>
