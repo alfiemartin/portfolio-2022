@@ -3,9 +3,13 @@ import tailwindConfig from "../tailwind.config.js";
 
 export type Breakpoint = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
-export const getBreakpoints = () => {
+export const getTheme = () => {
   const fullConfig = resolveConfig(tailwindConfig as any);
-  return (fullConfig.theme as any).screens as unknown as Record<string, string>;
+  return fullConfig.theme as any
+}
+
+export const getBreakpoints = () => {
+  return getTheme().screens as unknown as Record<string, string>;
 };
 
 export const getCurrentBreakpoint = () => {
