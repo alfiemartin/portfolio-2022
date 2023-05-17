@@ -10,8 +10,9 @@ import {
   SiNodedotjs,
 } from "react-icons/si";
 import { motion, useAnimate } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { getTheme } from "../../utils";
+import { useGlobalContext } from "../../context/GlobalContext";
 
 const IReact = ({ size = 50 }: { size?: number }) => {
   return (
@@ -56,49 +57,12 @@ const ITypescript = ({ size = 50 }: { size?: number }) => {
   );
 };
 
-const IMongo = ({ size = 50 }: { size?: number }) => {
-  const [animate, setAnimate] = useState<"enter" | "leave" | null>(null);
-  const [scope, animateFn] = useAnimate();
-
-  const duration_ms = 200;
-  const duration_s = duration_ms / 1000;
-
-  const initialColour = useRef<string>();
-
-  useEffect(() => {
-    const element = (scope.current as HTMLDivElement).querySelector("svg");
-    initialColour.current = window
-      .getComputedStyle(element as any)
-      .getPropertyValue("fill");
-  }, []);
-
-  useEffect(() => {
-    if (animate && initialColour.current) {
-      const greenColour = getTheme()?.colors.green["700"];
-
-      animateFn(
-        "*",
-        {
-          rotateZ: [0, 30, -30, 0],
-          fill: animate == "enter" ? greenColour : initialColour.current,
-        },
-        { duration: duration_s, times: [0, 0.3, 0.6, 1] }
-      );
-    }
-  }, [animate]);
-
-  return (
-    <motion.div
-      onMouseEnter={() => setAnimate("enter")}
-      onMouseLeave={() => setAnimate("leave")}
-      ref={scope}
-    >
-      <SiMongodb size={size} />
-    </motion.div>
-  );
-};
-
 export const Projects = () => {
+  const { isDark } = useGlobalContext();
+  const defaultColour = isDark
+    ? getTheme()?.colors.slate["200"]
+    : getTheme()?.colors.slate["800"];
+
   return (
     <SlideTemplate>
       <h1 className="mb-6">Projects</h1>
@@ -111,11 +75,51 @@ export const Projects = () => {
           icons={[
             <IReact key={"1"} size={50} />,
             <ITypescript key={"2"} size={50} />,
-            <IMongo key={"3"} size={50} />,
-            <SiExpress key={"4"} size={50} />,
-            <SiGraphql key={"5"} size={50} />,
-            <SiApollographql key={"6"} size={50} />,
-            <SiNodedotjs key={"7"} size={50} />,
+            <motion.div
+              initial={{ "--colour": defaultColour } as any}
+              whileHover={
+                {
+                  rotateZ: 30,
+                  "--colour": getTheme()?.colors.green["700"],
+                } as any
+              }
+              transition={{ type: "spring", bounce: 0.6 }}
+              key={isDark ? "3Dark" : "3Light"}
+            >
+              <SiMongodb
+                style={{ fill: "var(--colour)" }}
+                key={"3"}
+                size={50}
+              />
+            </motion.div>,
+            <motion.div
+              whileHover={{ scale: 1.2 }}
+              transition={{ type: "spring", bounce: 0.6 }}
+              key={"4"}
+            >
+              <SiExpress key={"5"} size={50} />
+            </motion.div>,
+            <motion.div
+              whileHover={{ rotateZ: 360 }}
+              transition={{ type: "spring" }}
+              key={"6"}
+            >
+              <SiGraphql size={50} />
+            </motion.div>,
+            <motion.div
+              whileHover={{ rotateZ: 360 }}
+              transition={{ type: "spring" }}
+              key="7"
+            >
+              <SiApollographql key={"7"} size={50} />
+            </motion.div>,
+            <motion.div
+              whileHover={{ rotateZ: 360 }}
+              transition={{ type: "spring" }}
+              key={"8"}
+            >
+              <SiNodedotjs key={"8"} size={50} />
+            </motion.div>,
           ]}
         />
         <ProjectCard
