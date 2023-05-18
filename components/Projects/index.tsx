@@ -1,6 +1,5 @@
 import { SlideTemplate } from "../Foundations";
 import { ProjectCard } from "../ProjectCard/ProjectCard";
-import { motion } from "framer-motion";
 import { getTheme } from "../../utils";
 import { useGlobalContext } from "../../context/GlobalContext";
 import {

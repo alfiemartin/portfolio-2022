@@ -20,6 +20,10 @@ const Home: NextPage = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [allowScroll, setAllowScroll] = useState(false);
 
+  useEffect(() => {
+    document.querySelector('main')?.scrollTo({ top: 0, behavior: 'auto' })
+  }, [allowScroll])
+
   const getPageTitle = (index: number) => {
     let pageTitle: string;
 
@@ -42,7 +46,6 @@ const Home: NextPage = () => {
         break;
       default:
         pageTitle = globalState.pageTitle ?? "";
-        //TODO
     }
 
     return pageTitle;
@@ -86,7 +89,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <main className={`container mx-auto h-full flex flex-col justify-between pt-8 ${allowScroll && 'overflow-y-hidden' } md:pt-10 opacity-0 ${swiper?.activeIndex !== undefined && 'opacity-100'}`}>
+      <main className={`container mx-auto h-full flex flex-col justify-between pt-8 overflow-y-hidden ${allowScroll && 'overflow-y-scroll' } md:pt-10 opacity-0 ${swiper?.activeIndex !== undefined && 'opacity-100'}`}>
         <div>
           <Swiper
             onSwiper={setSwiper}
@@ -114,7 +117,6 @@ const Home: NextPage = () => {
           className={showNav ? "opacity-0" : "opacity-100"}
           activeSlide={activeSlide}
           changeActiveSlide={changeActiveSlide}
-          getPageTitle={getPageTitle}
           swiper={swiper}
         />
         <SlidesNav
