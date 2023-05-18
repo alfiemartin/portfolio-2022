@@ -20,8 +20,8 @@ export const Projects = () => {
 
   return (
     <SlideTemplate>
-      <h1 className="mb-6">Projects</h1>
-      <div className="mt-4 mb-8 flex flex-col gap-8">
+      <h1 className="mb-6 hidden sm:block">Projects</h1>
+      <div className="mb-8 flex flex-col gap-8">
         <ProjectCard
           title="Once"
           description="At the height on the COVID lockdown, me and my brother lauched a

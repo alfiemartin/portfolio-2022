@@ -75,8 +75,8 @@ export const WorkExperience = () => {
 
   return (
     <SlideTemplate>
-      <h1>Professional Experience</h1>
-      <div className="mt-10 flex flex-col gap-8">
+      <h1 className="hidden sm:block">Professional Experience</h1>
+      <div className="flex flex-col gap-8">
         <div className="flex h-[calc(100vh-350px)] gap-8">
           <div className="flex flex-row gap-4 flex-1 md:flex-none">
             <div className="flex justify-center items-center relative">

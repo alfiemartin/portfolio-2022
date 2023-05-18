@@ -19,9 +19,9 @@ export const Contact = () => {
   return (
     <SlideTemplate className="">
       <div className="">
-        <h1>Contact {process.env.TEST}</h1>
+        <h1 className="hidden sm:block">Contact</h1>
         <div>
-          <div className="inline-grid grid-cols-[repeat(4,max-content)] gap-16 mt-10 justify-between">
+          <div className="inline-grid grid-cols-[repeat(4,max-content)] gap-16 justify-between">
             <SiLinkedin {...iconProps} />
             <a
               className="col-span-3 flex justify-start items-center"
