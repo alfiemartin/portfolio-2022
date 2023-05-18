@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import PageTemplate from "../components/Foundations";
 import React, { StrictMode } from "react";
-import GlobalContext, { useGlobalContext } from "../context/GlobalContext";
+import GlobalContext from "../context/GlobalContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
 
