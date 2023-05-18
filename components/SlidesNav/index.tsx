@@ -64,13 +64,13 @@ export const SlidesButtonNav = ({
 }: SlidesButtonNavProps) => {
   const breakpoint = useBreakpoints();
   const swiperButtonClasses =
-    "py-2 px-6 bg-slate-800 flex gap-2 items-center text-slate-200 dark:text-slate-800 dark:bg-slate-200 hover:bg-slate-700 dark:hover:bg-slate-300 transition-all";
+    "py-2 px-6 bg-slate-800 flex gap-2 pointer-events-auto items-center text-slate-200 dark:text-slate-800 dark:bg-slate-200 hover:bg-slate-700 dark:hover:bg-slate-300 transition-all";
   const swiperIconClasses =
     "inline-block text-xl fill-slate-200 dark:fill-slate-900 relative top-[-1px]";
 
   return (
     <div
-      className={`${extraClasses} w-full container fixed bottom-0 left-1/2 -translate-x-1/2 pb-8 transition-opacity duration-300 z-20`}
+      className={`${extraClasses} w-full container pointer-events-none fixed bottom-0 left-1/2 -translate-x-1/2 pb-8 transition-opacity duration-300 z-20`}
     >
       <div className="mx-4 flex justify-between items-end">
         <RippleButton
