@@ -9,7 +9,7 @@ export const Modal: React.FC<{ show: boolean; hideModal: () => void }> = ({
     <div
       className={`modal pointer-events-none opacity-0 transition-opacity duration-200 ${
         show && "pointer-events-auto opacity-100"
-      } bg-red-200 absolute inset-0 z-40`}
+      } bg-red-200 fixed inset-0 z-40`}
     >
       <button onClick={hideModal} className="right-0 absolute p-4 z-50">
         <RxCross1 size={50} />
