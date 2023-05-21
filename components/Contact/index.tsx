@@ -1,4 +1,3 @@
-import { SlideTemplate } from "../Foundations";
 import { SiLinkedin, SiGithub } from "react-icons/si";
 import { HiMail, HiPhone } from "react-icons/hi";
 import { useState } from "react";
@@ -10,63 +9,51 @@ const buttonClasses =
 // NOTE: Crude attempt to avoid bots
 const numberBackwards = process.env.NUM_BACKWARDS;
 const emailBackwards = process.env.EMAIL_BACKWARDS;
-const reverseString = (num: string) => num.split("").reverse().join("");
+
+String.prototype.reverse = function () {
+  return this.split("").reverse().join("");
+};
 
 export const Contact = () => {
   const [showEmail, setShowEmail] = useState(false);
   const [showPhone, setShowPhone] = useState(false);
 
   return (
-    <SlideTemplate className="">
-      <div className="">
-        <h1 className="hidden sm:block">Contact</h1>
-        <div>
-          <div className="inline-grid grid-cols-[repeat(4,max-content)] gap-16 justify-between">
-            <SiLinkedin {...iconProps} />
-            <a
-              className="col-span-3 flex justify-start items-center"
-              href="https://www.linkedin.com/in/alfie-martin99/"
-            >
-              linkedin.com/in/alfie-martin99/
-            </a>
-            <SiGithub {...iconProps} />
-            <a
-              className="col-span-3 flex justify-start items-center"
-              href="https://github.com/alfiemartin"
-            >
-              github.com/alfiemartin
-            </a>
-            <HiMail {...iconProps} />
-            <button
-              className={buttonClasses}
-              onClick={() => setShowEmail(true)}
-            >
-              {!showEmail ? (
-                "Click to show email"
-              ) : (
-                <a
-                  href={`mailto:${showEmail && reverseString(emailBackwards ?? '')}`}
-                >
-                  {showEmail && reverseString(emailBackwards ?? '')}
-                </a>
-              )}
-            </button>
-            <HiPhone {...iconProps} />
-            <button
-              className={buttonClasses}
-              onClick={() => setShowPhone(true)}
-            >
-              {!showPhone ? (
-                "Click to show phone number"
-              ) : (
-                <a href={`tel:${showPhone && reverseString(numberBackwards ?? '')}`}>
-                  {showPhone && reverseString(numberBackwards ?? '')}
-                </a>
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
-    </SlideTemplate>
+    <div className="inline-grid grid-cols-[repeat(4,max-content)] gap-16 justify-between">
+      <SiLinkedin {...iconProps} />
+      <a
+        className="col-span-3 flex justify-start items-center"
+        href="https://www.linkedin.com/in/alfie-martin99/"
+      >
+        linkedin.com/in/alfie-martin99/
+      </a>
+      <SiGithub {...iconProps} />
+      <a
+        className="col-span-3 flex justify-start items-center"
+        href="https://github.com/alfiemartin"
+      >
+        github.com/alfiemartin
+      </a>
+      <HiMail {...iconProps} />
+      <button className={buttonClasses} onClick={() => setShowEmail(true)}>
+        {!showEmail ? (
+          "Click to show email"
+        ) : (
+          <a href={`mailto:${showEmail && emailBackwards?.reverse()}`}>
+            {showEmail && emailBackwards?.reverse()}
+          </a>
+        )}
+      </button>
+      <HiPhone {...iconProps} />
+      <button className={buttonClasses} onClick={() => setShowPhone(true)}>
+        {!showPhone ? (
+          "Click to show phone number"
+        ) : (
+          <a href={`tel:${showPhone && numberBackwards?.reverse()}`}>
+            {showPhone && numberBackwards?.reverse()}
+          </a>
+        )}
+      </button>
+    </div>
   );
 };

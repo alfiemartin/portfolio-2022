@@ -10,8 +10,11 @@ import { WorkExperience } from "../components/WorkExperience";
 import { SlidesButtonNav, SlidesNav } from "../components/SlidesNav";
 import "swiper/css";
 import { Contact } from "../components/Contact";
+import PageTemplate from "../components/PageTemplate";
 
-export const pages = ['introduction', 'projects', 'professional-experience', 'contact']
+export const pages = ['Introduction', 'Projects', 'Professional Experience', 'Contact']
+const joinedPageNames = pages.map(name => name.split(' ').join(''))
+const pageComponents = [Introduction, Projects, WorkExperience, Contact]
 
 const Home: NextPage = () => {
   const globalState = useGlobalContext();
@@ -24,35 +27,28 @@ const Home: NextPage = () => {
     document.querySelector('main')?.scrollTo({ top: 0, behavior: 'auto' })
   }, [allowScroll])
 
-  const getPageTitle = (index: number) => {
-    let pageTitle: string;
-
+  const setScroll = (index: number) => {
     switch (index) {
       case 0:
         setAllowScroll(false);
-        pageTitle = "Welcome";
         break;
       case 1:
         setAllowScroll(true);
-        pageTitle = "Projects";
         break;
       case 2:
         setAllowScroll(false);
-        pageTitle = "Professional Experience";
         break;
       case 3:
         setAllowScroll(false);
-        pageTitle = "Contact";
         break;
       default:
-        pageTitle = globalState.pageTitle ?? "";
+        setAllowScroll(false)
     }
-
-    return pageTitle;
   };
 
   const handleSlideChange = ({ activeIndex }: SwiperType) => {
-    const pageTitle = getPageTitle(activeIndex);
+    const pageTitle = pages[activeIndex];
+    setScroll(activeIndex);
 
     setActiveSlide(activeIndex);
     if (globalState.setPageTitle) globalState.setPageTitle(pageTitle);
@@ -99,18 +95,13 @@ const Home: NextPage = () => {
             modules={[HashNavigation]}
             hashNavigation={{ watchState: true }}
           >
-            <SwiperSlide data-hash={pages[0]}> 
-              <Introduction />
-            </SwiperSlide>
-            <SwiperSlide data-hash={pages[1]}>
-              <Projects />
-            </SwiperSlide>
-            <SwiperSlide data-hash={pages[2]}>
-              <WorkExperience />
-            </SwiperSlide>
-            <SwiperSlide data-hash={pages[3]}>
-              <Contact />
-            </SwiperSlide>
+            {pageComponents.map((Page, i) => (
+              <SwiperSlide key={i} data-hash={joinedPageNames[i]}>
+                <PageTemplate title={i > 0 ? pages[i] : undefined} >
+                  <Page />
+                </PageTemplate>
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
         <SlidesButtonNav

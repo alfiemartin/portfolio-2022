@@ -4,7 +4,7 @@ import { Header } from "../Header";
 import { useGlobalContext } from "../../context/GlobalContext";
 import { Modal } from "../Modal";
 
-const PageTemplate = ({ children }: { children: ReactNode }) => {
+const AppTemplate = ({ children }: { children: ReactNode }) => {
   const { loadedSwiper, modal, setModal } = useGlobalContext();
 
   const hideModal = () => {
@@ -32,14 +32,4 @@ const PageTemplate = ({ children }: { children: ReactNode }) => {
   );
 };
 
-interface SlideTemplateProps {
-  className?: string;
-}
-
-const SlideTemplate: React.FC<SlideTemplateProps> = ({
-  children,
-  className,
-}) => <section className={`px-4 ${className}`}>{children}</section>;
-
-export default PageTemplate;
-export { SlideTemplate };
+export default AppTemplate;
