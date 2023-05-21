@@ -54,7 +54,9 @@ export const ProjectCard = ({
         >
           <div>
             {content}
-            <div className="flex flex-row justify-between">{icons}</div>
+            <div className="flex flex-row flex-wrap gap-2 justify-start mt-2">
+              {icons?.map((icon, i) => <div key={i} className="w-12 h-12">{icon}</div>)}
+            </div>
           </div>
         </motion.div>
       </div>

@@ -25,13 +25,13 @@ export const Projects = () => {
           social media campain to promote a mental health app."
         content={<div></div>}
         icons={[
-          <IReact key={"1"} size={50} />,
-          <ITypescript key={"2"} size={50} />,
-          <IGraphQL key={"3"} size={50} />,
-          <IMongoDb key={"4"} defaultColour={defaultColour} size={50} />,
-          <IApollo key={"5"} size={50} />,
-          <IExpress key={"6"} size={50} />,
-          <INodeJS key={"7"} size={50} />,
+          <IReact key={"1"} />,
+          <ITypescript key={"2"} />,
+          <IGraphQL key={"3"} />,
+          <IMongoDb key={"4"} defaultColour={defaultColour} />,
+          <IApollo key={"5"} />,
+          <IExpress key={"6"} />,
+          <INodeJS key={"7"} />,
         ]}
       />
       <ProjectCard

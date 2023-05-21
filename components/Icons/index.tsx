@@ -15,7 +15,7 @@ interface IconsProps {
   size?: number;
 }
 
-export const IReact = ({ size = 50 }: IconsProps) => {
+export const IReact = ({ size }: IconsProps) => {
   return (
     <motion.div whileHover={{ rotateZ: 360 }} transition={{ type: "spring" }}>
       <SiReact size={size} />
@@ -69,7 +69,7 @@ export const INodeJS = ({ size }: IconsProps) => (
   </motion.div>
 );
 
-export const ITypescript = ({ size = 50 }: IconsProps) => {
+export const ITypescript = ({ size }: IconsProps) => {
   const [animate, setAnimate] = useState<"enter" | "leave" | null>(null);
   const [scope, animateFn] = useAnimate();
 
