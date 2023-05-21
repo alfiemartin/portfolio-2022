@@ -72,7 +72,7 @@ export const SlidesButtonNav = ({
     <div
       className={`${extraClasses} w-full container pointer-events-none fixed bottom-0 left-1/2 -translate-x-1/2 pb-8 transition-opacity duration-300 z-20`}
     >
-      <div className="flex justify-between items-end">
+      <div className="flex justify-between items-end mx-2">
         <RippleButton
           className={`${swiperButtonClasses} ${
             activeSlide - 1 < 0 ? "opacity-0" : "opacity-100"
