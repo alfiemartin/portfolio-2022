@@ -5,7 +5,7 @@ import {
   useEffect,
   MouseEvent,
 } from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimate } from "framer-motion";
 import { useMousePositionInElement } from "../../hooks/useMousePositions";
 import { useBreakpoints } from "../../hooks/useBreakpoints";
 import { useGlobalContext } from "../../context/GlobalContext";
@@ -18,6 +18,7 @@ interface WorkButtonProps {
   setSelectedExperience: Dispatch<SetStateAction<string | null>>;
   classes?: string;
   onClickMobile?: (e: MouseEvent) => void;
+  play: boolean;
 }
 
 const WorkButton = ({
@@ -28,6 +29,7 @@ const WorkButton = ({
   classes,
   date,
   onClickMobile,
+  play,
 }: WorkButtonProps) => {
   const [positions, getPositions] = useMousePositionInElement();
   const breakpoint = useBreakpoints();
@@ -45,11 +47,20 @@ const WorkButton = ({
     }
   };
 
+  const [scope, animateFn] = useAnimate();
+
+  useEffect(() => {
+    if(breakpoint && ['xs', 'sm'].includes(breakpoint)) {
+      animateFn("*", { y: play ? [0, 3, 0] : 0 }, { duration: 0.5 });
+    }
+  }, [play]);
+
   return (
-    <div onClick={onClickWithGuard}>
+    <div>
       <p className="mb-4 text-slate-400 dark:text-slate-900">{date}</p>
       <button
         {...getPositions}
+        onClick={onClickWithGuard}
         onMouseEnter={() => {
           setSelectedExperience(title);
           setInButton(true);
@@ -58,7 +69,9 @@ const WorkButton = ({
         className={`shadow border-black w-full border-y-[6px] border-x-[7px] ${classes}`}
       >
         <div className="bg-slate-600 block p-2 scale-[1.02] rounded text-slate-200 cursor-pointer">
-          {title}
+          <motion.div ref={scope} whileTap={{ y: [0, 3, 0] }} transition={{duration: 0.5 }}>
+            <p>{title}</p>
+          </motion.div>
         </div>
       </button>
     </div>
@@ -72,8 +85,19 @@ export const WorkExperience = () => {
     null
   );
   const { setModal } = useGlobalContext();
-
   const breakpoint = useBreakpoints();
+  const [playIndex, setPlayIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPlayIndex((prevRandom) => {
+        const random = Math.round(Math.random() * (3 - 1));
+        return random === prevRandom ? random - 1 : random;
+      });
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="flex flex-col gap-8">
@@ -92,6 +116,7 @@ export const WorkExperience = () => {
               }
               title="Self Employed"
               date="August 2020"
+              play={0 === playIndex}
             />
             <WorkButton
               setInButton={setInButton}
@@ -102,6 +127,7 @@ export const WorkExperience = () => {
               }
               title="Remarkable Commerce"
               date="May 2021"
+              play={1 === playIndex}
             />
             <WorkButton
               setInButton={setInButton}
@@ -112,6 +138,7 @@ export const WorkExperience = () => {
               }
               title="Experian"
               date="August 2022"
+              play={['2', '-1'].includes(playIndex.toString())}
             />
           </div>
         </div>

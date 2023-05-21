@@ -12,9 +12,9 @@ import "swiper/css";
 import { Contact } from "../components/Contact";
 import PageTemplate from "../components/PageTemplate";
 
-export const pages = ['Introduction', 'Projects', 'Professional Experience', 'Contact']
+export const pages = ['Introduction', 'Professional Experience', 'Projects', 'Contact']
 const joinedPageNames = pages.map(name => name.split(' ').join(''))
-const pageComponents = [Introduction, Projects, WorkExperience, Contact]
+const pageComponents = [Introduction, WorkExperience, Projects, Contact]
 
 const Home: NextPage = () => {
   const globalState = useGlobalContext();

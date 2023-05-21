@@ -18,7 +18,7 @@ export const Projects = () => {
     : getTheme()?.colors.slate["800"];
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 pb-4">
       <ProjectCard
         title="Once"
         description="At the height on the COVID lockdown, me and my brother lauched a

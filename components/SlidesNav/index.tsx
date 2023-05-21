@@ -35,7 +35,7 @@ export const SlidesNav = ({
       onMouseOver={onMouseOver}
       onMouseLeave={onMouseLeave}
     >
-      <div className="mx-4 bg-gradient-to-t from-slate-800 to-slate-700 dark:from-slate-700 dark:to-slate-600 rounded-t-lg h-12 grid place-items-center">
+      <div className="bg-gradient-to-t from-slate-800 to-slate-700 dark:from-slate-700 dark:to-slate-600 rounded-t-lg h-12 grid place-items-center">
         <ul className={`flex justify-center gap-20 shadow-inner`}>
           {pages.map((slide, i) => (
             <li key={i}>
@@ -72,7 +72,7 @@ export const SlidesButtonNav = ({
     <div
       className={`${extraClasses} w-full container pointer-events-none fixed bottom-0 left-1/2 -translate-x-1/2 pb-8 transition-opacity duration-300 z-20`}
     >
-      <div className="mx-4 flex justify-between items-end">
+      <div className="flex justify-between items-end">
         <RippleButton
           className={`${swiperButtonClasses} ${
             activeSlide - 1 < 0 ? "opacity-0" : "opacity-100"
