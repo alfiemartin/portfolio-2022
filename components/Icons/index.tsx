@@ -18,7 +18,7 @@ interface IconsProps {
 export const IReact = ({ size }: IconsProps) => {
   return (
     <motion.div whileHover={{ rotateZ: 360 }} transition={{ type: "spring" }}>
-      <SiReact size={size} />
+      <SiReact className="w-full h-full" size={size} />
     </motion.div>
   );
 };
@@ -38,19 +38,19 @@ export const IMongoDb = ({
     transition={{ type: "spring", bounce: 0.6 }}
     key={defaultColour}
   >
-    <SiMongodb style={{ fill: "var(--colour)" }} key={"3"} size={size} />
+    <SiMongodb className="w-full h-full" style={{ fill: "var(--colour)" }} key={"3"} size={size} />
   </motion.div>
 );
 
 export const IGraphQL = ({ size }: IconsProps) => (
   <motion.div whileHover={{ rotateZ: 360 }} transition={{ type: "spring" }}>
-    <SiGraphql size={size} />
+    <SiGraphql className="w-full h-full" size={size} />
   </motion.div>
 );
 
 export const IApollo = ({ size }: IconsProps) => (
   <motion.div whileHover={{ rotateZ: -360 }} transition={{ type: "spring" }}>
-    <SiApollographql size={size} />
+    <SiApollographql className="w-full h-full" size={size} />
   </motion.div>
 );
 
@@ -59,13 +59,13 @@ export const IExpress = ({ size }: IconsProps) => (
     whileHover={{ scale: 1.2 }}
     transition={{ type: "spring", bounce: 0.6 }}
   >
-    <SiExpress size={size} />
+    <SiExpress className="w-full h-full" size={size} />
   </motion.div>
 );
 
 export const INodeJS = ({ size }: IconsProps) => (
   <motion.div whileHover={{ rotateZ: 360 }} transition={{ type: "spring" }}>
-    <SiNodedotjs size={size} />
+    <SiNodedotjs className="w-full h-full" size={size} />
   </motion.div>
 );
 
@@ -78,7 +78,7 @@ export const ITypescript = ({ size }: IconsProps) => {
 
   useEffect(() => {
     if (animate) {
-      const enterAnimation = [0, 10, -10, 0];
+      const enterAnimation = [0, 1, -1, 0].map(x => x * (scope.current as HTMLDivElement).scrollWidth * 0.1);
 
       animateFn(
         "*",
@@ -99,7 +99,7 @@ export const ITypescript = ({ size }: IconsProps) => {
       onMouseLeave={() => setAnimate("leave")}
       ref={scope}
     >
-      <SiTypescript size={size} />
+      <SiTypescript className="w-full h-full" size={size} />
     </motion.div>
   );
 };
