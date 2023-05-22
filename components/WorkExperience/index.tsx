@@ -70,7 +70,7 @@ const WorkButton = ({
       >
         <div className="bg-slate-600 block p-2 scale-[1.02] rounded text-slate-200 cursor-pointer">
           <motion.div ref={scope} whileTap={{ y: [0, 3, 0] }} transition={{duration: 0.5 }}>
-            <p>{title}</p>
+            <p className="text-slate-200">{title}</p>
           </motion.div>
         </div>
       </button>

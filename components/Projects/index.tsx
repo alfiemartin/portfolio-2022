@@ -76,6 +76,14 @@ export const Projects = () => {
         ]}
       />
       <ProjectCard
+        title="Socially Distant"
+        description="At the height on the COVID lockdown, me and my brother lauched a
+            social media campain to promote a mental health app he built. The site was live for around a year
+            and was a SPA which calculate the number of 'social interactions' missed due to the COVID lockdowns.
+            "
+        content={<div></div>}
+      />
+      <ProjectCard
         title="Pressure Precision"
         description="A NextJS rebuild concept of a friends business site which was originally on Wordpress. 
         Uses NextJS and TailwindCSS. Built to highlight the performance difference of NextJS and Wordpress.
@@ -114,14 +122,6 @@ export const Projects = () => {
         description="A quick rebuild of my dad's portfolio website, built when i was just starting to get
         comfortable with frontend development using NextJS.
         "
-        content={<div></div>}
-      />
-      <ProjectCard
-        title="Socially Distant"
-        description="At the height on the COVID lockdown, me and my brother lauched a
-            social media campain to promote a mental health app he built. The site was live for around a year
-            and was a SPA which calculate the number of 'social interactions' missed due to the COVID lockdowns.
-            "
         content={<div></div>}
       />
       <ProjectCard
