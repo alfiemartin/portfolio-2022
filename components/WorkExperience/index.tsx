@@ -9,6 +9,7 @@ import { motion, useAnimate } from "framer-motion";
 import { useMousePositionInElement } from "../../hooks/useMousePositions";
 import { useBreakpoints } from "../../hooks/useBreakpoints";
 import { useGlobalContext } from "../../context/GlobalContext";
+import { CardLink } from "../Projects";
 
 interface WorkButtonProps {
   title: string;
@@ -122,9 +123,8 @@ const Remarkable = () => (
     <p>
       My first professional role where i became much more confident in my skills
       and was able to work with a number of technologies.{" "}
-      <a href={"https://remarkable.net/"} target="_blank" rel="noreferrer">
-        Remarkable Commerce
-      </a>{" "}
+      <CardLink text="Remarkable Commerce" href="https://remarkable.net/" />
+     {" "}
       has numerous high-profile e-commerce clients and provides a CMS to each
       client.
     </p>
@@ -154,13 +154,8 @@ const Remarkable = () => (
       </li>
       <li>
         Ended up as the main developer for the{" "}
-        <a
-          href="https://www.yoursclothing.co.uk/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Yours Clothing
-        </a>{" "}
+        <CardLink text="Yours Clothing" href="https://www.yoursclothing.co.uk/" />
+        {" "}
         brand. This projects is 4 sites in one, using .Net and Razor.
       </li>
     </ul>

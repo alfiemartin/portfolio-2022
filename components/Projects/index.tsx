@@ -13,7 +13,7 @@ import {
 } from "../Icons";
 import { IGraphQL } from "../Icons/index";
 
-const CardLink = ({
+export const CardLink = ({
   href,
   text,
   className,
@@ -23,7 +23,7 @@ const CardLink = ({
   className?: string;
 }) => (
   <a
-    className={className}
+    className={`text-sm text-blue-300 dark:text-blue-300 ${className}`}
     target="_blank"
     rel="noreferrer"
     href={href}
@@ -44,7 +44,7 @@ export const Projects = () => {
       <ProjectCard
         title="Once"
         description="A new take on mobile dating apps. Source code currently privated to keep the concept hidden for now...
-        built using Expo and React Native. Along with a frontend, the app has a custom Express backend which also uses Apollo and TypeORM
+        Built using Expo and React Native. Along with a frontend, the app has a custom Express backend which also uses Apollo and TypeORM
         to retreive the data from the Mongo database and to also consume the data on the frontend.
         "
         content={

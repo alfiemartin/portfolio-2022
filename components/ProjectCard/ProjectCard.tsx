@@ -16,43 +16,24 @@ export const ProjectCard = ({
   icons,
 }: ProjectCardProps) => {
   const [expanded, setExpanded] = useState(false);
-  const [fullyExpanded, setFullyExpanded] = useState(false);
   const innerSection = useRef<HTMLDivElement>(null);
   const [innerSectionHeight, setInnerSectionHeight] = useState<number | null>(
     null
   );
-  const [windowInnerWidth, setWindowInnerWidth] = useState(0);
 
   const duration_s = 0.5;
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
-    if (expanded) {
-      timeout = setTimeout(() => setFullyExpanded(true), duration_s * 1000);
-    } else {
-      setFullyExpanded(false);
-      timeout = setTimeout(
-        () => fullyExpanded && setFullyExpanded(false),
-        duration_s * 1000
-      );
-    }
-
-    () => clearTimeout(timeout);
-  }, [expanded]);
-
-  useEffect(() => {
-    if (innerSection.current?.scrollHeight) {
-      setInnerSectionHeight(innerSection.current.scrollHeight);
-    }
-  }, [windowInnerWidth]);
-
-  useEffect(() => {
-    const setInnerWidth = () => {
-      setWindowInnerWidth(window.innerWidth);
+    const setHeight = () => {
+      if(innerSection?.current) {
+        setInnerSectionHeight(innerSection.current.scrollHeight);
+      }
     };
 
-    window?.addEventListener("resize", setInnerWidth);
-    () => window?.removeEventListener("resize", setInnerWidth);
+    setHeight();
+
+    window?.addEventListener("resize", setHeight);
+    () => window?.removeEventListener("resize", setHeight);
   }, []);
 
   return (
@@ -80,9 +61,7 @@ export const ProjectCard = ({
           animate={{ maxHeight: expanded ? `${innerSectionHeight}px` : "0px" }}
           transition={{ duration: duration_s, type: "spring" }}
           ref={innerSection}
-          className={`${
-            fullyExpanded ? "overflow-visible" : "overflow-hidden"
-          }`}
+          className="overflow-hidden"
         >
           <div className="mt-4">
             {content}
