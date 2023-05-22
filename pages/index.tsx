@@ -28,22 +28,7 @@ const Home: NextPage = () => {
   }, [allowScroll])
 
   const setScroll = (index: number) => {
-    switch (index) {
-      case 0:
-        setAllowScroll(false);
-        break;
-      case 1:
-        setAllowScroll(true);
-        break;
-      case 2:
-        setAllowScroll(false);
-        break;
-      case 3:
-        setAllowScroll(false);
-        break;
-      default:
-        setAllowScroll(false)
-    }
+    setAllowScroll(index === 2 ? true : false)
   };
 
   const handleSlideChange = ({ activeIndex }: SwiperType) => {
