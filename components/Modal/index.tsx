@@ -17,7 +17,7 @@ export const Modal: React.FC<{ show: boolean; hideModal: () => void }> = ({
       <div
         className={`border-black h-full border-x-[10px] border-y-[10px] group transition-all duration-200 shadow-none hover:shadow-default `}
       >
-        <div className="bg-slate-200 dark:bg-slate-600 p-4 py-2 h-full rounded scale-y-[1.01] scale-x-[1.005] cursor-pointer">
+        <div className="bg-slate-200 dark:bg-slate-600 p-4 py-2 h-full rounded overflow-scroll scale-y-[1.01] scale-x-[1.005] cursor-pointer">
           {children}
         </div>
       </div>
