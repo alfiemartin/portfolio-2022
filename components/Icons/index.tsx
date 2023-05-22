@@ -8,6 +8,8 @@ import {
   SiGraphql,
   SiApollographql,
   SiNodedotjs,
+  SiExpo,
+  SiVercel
 } from "react-icons/si";
 import { getTheme } from "../../utils";
 
@@ -19,6 +21,23 @@ export const IReact = ({ size }: IconsProps) => {
   return (
     <motion.div whileHover={{ rotateZ: 360 }} transition={{ type: "spring" }}>
       <SiReact className="w-full h-full" size={size} />
+    </motion.div>
+  );
+};
+
+export const IVercel = ({ size }: IconsProps) => {
+  return (
+    <motion.div whileHover={{ rotateZ: 360 }} transition={{ type: "spring" }}>
+      <SiVercel className="w-full h-full" size={size} />
+    </motion.div>
+  );
+};
+
+
+export const IExpo = ({ size }: IconsProps) => {
+  return (
+    <motion.div whileHover={{ y: -5 }} transition={{ type: "spring" }}>
+      <SiExpo className="w-full h-full" size={size} />
     </motion.div>
   );
 };

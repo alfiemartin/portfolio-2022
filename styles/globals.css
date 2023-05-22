@@ -8,6 +8,10 @@
   }
 }
 
+.project-card *:not(a) {
+  @apply text-slate-200;
+}
+
 a {
   @apply text-xl transition-colors duration-150 text-blue-600 dark:text-blue-300 dark:hover:text-blue-400 hover:text-blue-800 
 }

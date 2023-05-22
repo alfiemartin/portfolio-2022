@@ -27,15 +27,18 @@ export const ProjectCard = ({
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
-    if(expanded) {
-      timeout = setTimeout(() => setFullyExpanded(true), duration_s * 1000)
+    if (expanded) {
+      timeout = setTimeout(() => setFullyExpanded(true), duration_s * 1000);
     } else {
       setFullyExpanded(false);
-      timeout = setTimeout(() => setFullyExpanded(false), duration_s * 1000)
+      timeout = setTimeout(
+        () => fullyExpanded && setFullyExpanded(false),
+        duration_s * 1000
+      );
     }
 
     () => clearTimeout(timeout);
-  }, [expanded])
+  }, [expanded]);
 
   useEffect(() => {
     if (innerSection.current?.scrollHeight) {
@@ -48,19 +51,21 @@ export const ProjectCard = ({
       setWindowInnerWidth(window.innerWidth);
     };
 
-    window?.addEventListener('resize', setInnerWidth);
-    () => window?.removeEventListener('resize', setInnerWidth);
-  }, [])
+    window?.addEventListener("resize", setInnerWidth);
+    () => window?.removeEventListener("resize", setInnerWidth);
+  }, []);
 
   return (
     <div
       className={`border-black border-x-[10px] border-y-[10px] group max-w-3xl transition-all duration-200 shadow-none hover:shadow-default `}
       onClick={() => setExpanded((expanded) => !expanded)}
     >
-      <div className="bg-slate-600 p-4 py-2 rounded scale-y-[1.01] scale-x-[1.005] cursor-pointer">
+      <div className="project-card bg-slate-600 p-4 py-2 rounded scale-y-[1.01] scale-x-[1.005] cursor-pointer">
         <div className="flex justify-between">
-          <div className="text-slate-200">
-            <h3 className="text-inheri text-2xl md:text-3xl lg:text-4xl mb-1 font-semibold">{title}</h3>
+          <div>
+            <h3 className="text-inheri text-2xl md:text-3xl mb-1 font-semibold">
+              {title}
+            </h3>
             <h4 className="text-sm text-inherit">{description}</h4>
           </div>
           <motion.div
@@ -75,12 +80,18 @@ export const ProjectCard = ({
           animate={{ maxHeight: expanded ? `${innerSectionHeight}px` : "0px" }}
           transition={{ duration: duration_s, type: "spring" }}
           ref={innerSection}
-          className={`${fullyExpanded ? 'overflow-visible' : 'overflow-hidden'}`}
+          className={`${
+            fullyExpanded ? "overflow-visible" : "overflow-hidden"
+          }`}
         >
-          <div>
+          <div className="mt-4">
             {content}
-            <div className="flex flex-row flex-wrap gap-x-6 gap-y-4 justify-between mt-4">
-              {icons?.map((icon, i) => <div key={i} className="w-10 h-10">{icon}</div>)}
+            <div className="flex flex-row flex-wrap gap-x-6 gap-y-4 justify-start mt-4">
+              {icons?.map((icon, i) => (
+                <div key={i} className="w-10 h-10">
+                  {icon}
+                </div>
+              ))}
             </div>
           </div>
         </motion.div>
