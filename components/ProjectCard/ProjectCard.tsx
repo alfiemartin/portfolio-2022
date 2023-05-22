@@ -1,7 +1,6 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 import { motion } from "framer-motion";
-import { debounce } from "../../utils";
 
 interface ProjectCardProps {
   title: string;
@@ -45,10 +44,9 @@ export const ProjectCard = ({
   }, [windowInnerWidth]);
 
   useEffect(() => {
-    const setInnerWidth = debounce(() => {
-      console.log('setInnerWidth')
+    const setInnerWidth = () => {
       setWindowInnerWidth(window.innerWidth);
-    }, 500);
+    };
 
     window?.addEventListener('resize', setInnerWidth);
     () => window?.removeEventListener('resize', setInnerWidth);
