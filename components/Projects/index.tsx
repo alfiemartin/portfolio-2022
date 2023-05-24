@@ -37,7 +37,7 @@ export const Projects = () => {
   const { isDark } = useGlobalContext();
   const defaultColour = isDark
     ? getTheme()?.colors.slate["200"]
-    : getTheme()?.colors.slate["800"];
+    : getTheme()?.colors.slate["200"];
 
   return (
     <div className="flex flex-col gap-8 pb-4">
