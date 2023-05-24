@@ -16,6 +16,7 @@ export const ProjectCard = ({
   icons,
 }: ProjectCardProps) => {
   const [expanded, setExpanded] = useState(false);
+  const [fullyExpanded, setFullyExpanded] = useState(false);
   const innerSection = useRef<HTMLDivElement>(null);
   const [innerSectionHeight, setInnerSectionHeight] = useState<number | null>(
     null
@@ -24,8 +25,20 @@ export const ProjectCard = ({
   const duration_s = 0.5;
 
   useEffect(() => {
+    let timeout: NodeJS.Timeout;
+
+    if(expanded) {
+      timeout = setTimeout(() => setFullyExpanded(true), duration_s * 1000);
+    } else {
+      setFullyExpanded(false);
+    }
+
+    () => clearTimeout(timeout);
+  }, [expanded]);
+
+  useEffect(() => {
     const setHeight = () => {
-      if(innerSection?.current) {
+      if (innerSection?.current) {
         setInnerSectionHeight(innerSection.current.scrollHeight);
       }
     };
@@ -38,7 +51,7 @@ export const ProjectCard = ({
 
   return (
     <div
-      className={`border-black border-x-[10px] border-y-[10px] group max-w-3xl transition-all duration-200 shadow-none hover:shadow-default `}
+      className={`border-black border-x-[10px] border-y-[10px] overflow-hidden group max-w-3xl transition-all duration-200 shadow-none hover:shadow-default `}
       onClick={() => setExpanded((expanded) => !expanded)}
     >
       <div className="project-card bg-slate-600 p-4 py-2 rounded scale-y-[1.01] scale-x-[1.005] cursor-pointer">
@@ -61,11 +74,11 @@ export const ProjectCard = ({
           animate={{ maxHeight: expanded ? `${innerSectionHeight}px` : "0px" }}
           transition={{ duration: duration_s, type: "spring" }}
           ref={innerSection}
-          className="overflow-hidden"
+          className={fullyExpanded ? 'overflow-visible' : 'overflow-hidden'}
         >
           <div className="mt-4">
             {content}
-            <div className="flex flex-row flex-wrap gap-x-6 gap-y-4 justify-start mt-4">
+            <div className="flex flex-row flex-wrap gap-x-10 gap-y-4 justify-start mt-4">
               {icons?.map((icon, i) => (
                 <div key={i} className="w-10 h-10">
                   {icon}

@@ -75,13 +75,56 @@ export const Projects = () => {
           <IExpo key={"8"} />,
         ]}
       />
+      <h3 className="mt-8">&apos;Older Projects&apos;</h3>
+      <ProjectCard
+        title="TapFlash"
+        description="One of my very first projects and only game i've ever built on the web. Allows
+        users to sign in with Google and post their score to the leaderboards. The objective of the game is to
+        press the buttons in the correct sequence.
+        "
+        content={
+          <div>
+            <p>
+              The aim of the game is to click the buttons in the order they
+              light up... Give it a try 👇
+            </p>
+            <div className="flex gap-4">
+              <CardLink
+                text="View demo"
+                href="https://tapflash-77edb.web.app/"
+              />
+              <CardLink
+                text="View code"
+                href="https://github.com/alfiemartin/TapFlash"
+              />
+            </div>
+          </div>
+        }
+        icons={[<IReact key={1} />]}
+      />
       <ProjectCard
         title="Socially Distant"
         description="At the height on the COVID lockdown, me and my brother lauched a
             social media campain to promote a mental health app he built. The site was live for around a year
             and was a SPA which calculate the number of 'social interactions' missed due to the COVID lockdowns.
             "
-        content={<div></div>}
+        content={
+          <div className="flex gap-4">
+            <CardLink
+              text="View Demo"
+              href="https://antisocially-distant-alfiemartin.vercel.app/"
+            />
+            <CardLink
+              text="View Code"
+              href="https://github.com/alfiemartin/antisocially-distant"
+            />
+          </div>
+        }
+        icons={[
+          <ITypescript key={1} />,
+          <IReact key={2} />,
+          <IVercel key={3} />,
+        ]}
       />
       <ProjectCard
         title="Pressure Precision"
@@ -108,29 +151,64 @@ export const Projects = () => {
           <IVercel key={"3"} />,
         ]}
       />
-      <h3 className="mt-8">&apos;Older Projects&apos;</h3>
+      <ProjectCard
+        title="RDM Technology"
+        description="A quick rebuild of my dad's portfolio website, built when i was just starting to get
+        comfortable with frontend development using NextJS.
+        "
+        content={
+          <div className="flex gap-4">
+            <CardLink text="View live" href="https://www.rdmtechnology.com/" />
+            <CardLink
+              text="View code"
+              href="https://github.com/alfiemartin/RDM-Technology"
+            />
+          </div>
+        }
+        icons={[<IReact key={1} />]}
+      />
       <ProjectCard
         title="Previous Portfolios"
         description="Funnily enough, most of my personal projects have probably been portfolios, attempting to show
         off my frontend skills through the portfolio itself rather than the individual projects. Doing this is
         surprisingly difficult when trying to maintain a good UX.
         "
-        content={<div></div>}
-      />
-      <ProjectCard
-        title="RDM Technology"
-        description="A quick rebuild of my dad's portfolio website, built when i was just starting to get
-        comfortable with frontend development using NextJS.
-        "
-        content={<div></div>}
-      />
-      <ProjectCard
-        title="TapFlash"
-        description="One of my very first projects and only game i've ever built on the web. Allows
-        users to sign in with Google and post their score to the leaderboards. The objective of the game is to
-        press the buttons in the correct sequence.
-        "
-        content={<div></div>}
+        content={
+          <div>
+            <div className="grid items-center grid-cols-[120px,repeat(2,100px)]">
+              <p>Interactive</p>
+              <CardLink text="View demo" href="https://alfie-martin2-6xy3fikjc-alfiemartin.vercel.app/" />
+              <CardLink
+                text="View code"
+                href="https://github.com/alfiemartin/Alfie-Martin2"
+              />
+            </div>
+            <div className="grid items-center grid-cols-[120px,repeat(2,100px)]">
+              <p>Interactive 2</p>
+              <CardLink text="View demo" href="https://percy-git-master-alfiemartin.vercel.app/" />
+              <CardLink
+                text="View code"
+                href="https://github.com/alfiemartin/percy"
+              />
+            </div>
+            <div className="grid items-center grid-cols-[120px,repeat(2,100px)]">
+              <p>percy</p>
+              <CardLink text="View demo" href="https://percy-git-master-alfiemartin.vercel.app/" />
+              <CardLink
+                text="View code"
+                href="https://github.com/alfiemartin/percy"
+              />
+            </div>
+            <div className="grid items-center grid-cols-[120px,repeat(2,100px)]">
+              <p>2021</p>
+              <CardLink text="View demo" href="https://april-percy-alfiemartin.vercel.app/" />
+              <CardLink
+                text="View code"
+                href="https://github.com/alfiemartin/april-percy"
+              />
+            </div>
+          </div>
+        }
       />
     </div>
   );
