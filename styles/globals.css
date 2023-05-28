@@ -12,7 +12,7 @@
   @apply text-slate-200;
 }
 
-*::-webkit-scrollbar {
+*::-webkit-scrollbar:not(.work-experience, .work-experience *) {
   display: none;
 }
 

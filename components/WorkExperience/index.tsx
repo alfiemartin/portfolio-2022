@@ -224,7 +224,7 @@ export const WorkExperience = () => {
         const random = Math.round(Math.random() * (3 - 1));
         return random === prevRandom ? random - 1 : random;
       });
-    }, 5000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, []);
