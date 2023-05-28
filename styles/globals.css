@@ -8,8 +8,12 @@
   }
 }
 
-.project-card *:not(a) {
+.project-card *:not(a), .work-experience *:not(a) {
   @apply text-slate-200;
+}
+
+*::-webkit-scrollbar {
+  display: none;
 }
 
 a {

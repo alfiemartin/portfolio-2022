@@ -4,6 +4,9 @@ import {
   useState,
   useEffect,
   MouseEvent,
+  useRef,
+  memo,
+  MutableRefObject,
 } from "react";
 import { motion, useAnimate } from "framer-motion";
 import { useMousePositionInElement } from "../../hooks/useMousePositions";
@@ -20,6 +23,7 @@ interface WorkButtonProps {
   classes?: string;
   onClickMobile?: (e: MouseEvent) => void;
   play: boolean;
+  timeout: MutableRefObject<NodeJS.Timeout | undefined>;
 }
 
 const WorkButton = ({
@@ -31,6 +35,7 @@ const WorkButton = ({
   date,
   onClickMobile,
   play,
+  timeout,
 }: WorkButtonProps) => {
   const [positions, getPositions] = useMousePositionInElement();
   const breakpoint = useBreakpoints();
@@ -63,10 +68,15 @@ const WorkButton = ({
         {...getPositions}
         onClick={onClickWithGuard}
         onMouseEnter={() => {
+          if (timeout.current) {
+            clearTimeout(timeout.current);
+          }
           setSelectedExperience(title);
           setInButton(true);
         }}
-        onMouseLeave={() => setInButton(false)}
+        onMouseLeave={() =>
+          (timeout.current = setTimeout(() => setInButton(false), 1000))
+        }
         className={`shadow border-black w-full border-y-[6px] border-x-[7px] ${classes}`}
       >
         <div className="bg-slate-600 block p-2 scale-[1.02] rounded text-slate-200 cursor-pointer">
@@ -82,6 +92,8 @@ const WorkButton = ({
     </div>
   );
 };
+
+const MemoButton = memo(WorkButton);
 
 const SelfEmployed = () => (
   <div>
@@ -123,9 +135,8 @@ const Remarkable = () => (
     <p>
       My first professional role where i became much more confident in my skills
       and was able to work with a number of technologies.{" "}
-      <CardLink text="Remarkable Commerce" href="https://remarkable.net/" />
-     {" "}
-      has numerous high-profile e-commerce clients and provides a CMS to each
+      <CardLink text="Remarkable Commerce" href="https://remarkable.net/" /> has
+      numerous high-profile e-commerce clients and provides a CMS to each
       client.
     </p>
     <ul className="list-disc mt-4 ml-4">
@@ -154,8 +165,10 @@ const Remarkable = () => (
       </li>
       <li>
         Ended up as the main developer for the{" "}
-        <CardLink text="Yours Clothing" href="https://www.yoursclothing.co.uk/" />
-        {" "}
+        <CardLink
+          text="Yours Clothing"
+          href="https://www.yoursclothing.co.uk/"
+        />{" "}
         brand. This projects is 4 sites in one, using .Net and Razor.
       </li>
     </ul>
@@ -166,20 +179,30 @@ const Experian = () => (
   <div>
     <h3>Experian</h3>
     <p>
-      After around 1.5 years at my previous company, i landed a job for Experian Comsumer Services. Within the first month
-      the senior developer next to me left, leaving me as the main Frontend developer across two different teams.
+      After around 1.5 years at my previous company, i landed a job for Experian
+      Comsumer Services. Within the first month the senior developer next to me
+      left, leaving me as the main Frontend developer across two different
+      teams.
     </p>
     <ul className="list-disc mt-4 ml-4">
-      <li>Working on the new NextJS project which involved user sign-in and account management.</li>
+      <li>
+        Working on the new NextJS project which involved user sign-in and
+        account management.
+      </li>
       <li>Strong component driven arcitecture.</li>
       <li>Styled components for styling.</li>
       <li>Strong emphasis on testing, including Jest and cypress.</li>
-      <li>AWS for debugging pipelines, pushing builds and deploying to production.</li>
+      <li>
+        AWS for debugging pipelines, pushing builds and deploying to production.
+      </li>
       <li>Typescript.</li>
       <li>Fixing security flaws when needed.</li>
       <li>Context API and useReducer for managing state.</li>
       <li>GA event tagging using Ensighten.</li>
-      <li>Transitioned the app to use the new company frontend component library and contributed to it.</li>
+      <li>
+        Transitioned the app to use the new company frontend component library
+        and contributed to it.
+      </li>
       <li>Jira and Confluence for project management.</li>
     </ul>
   </div>
@@ -193,6 +216,7 @@ export const WorkExperience = () => {
   const { setModal } = useGlobalContext();
   const breakpoint = useBreakpoints();
   const [playIndex, setPlayIndex] = useState(0);
+  let timeout = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -213,7 +237,7 @@ export const WorkExperience = () => {
             <div className="w-full h-full border-r-[7px] border-slate-300 dark:border-slate-900 border-dotted" />
           </div>
           <div className="flex flex-col justify-between flex-1 md:flex-none">
-            <WorkButton
+            <MemoButton
               setInButton={setInButton}
               setPositions={setPositions}
               setSelectedExperience={() =>
@@ -224,9 +248,10 @@ export const WorkExperience = () => {
               }
               title="Self Employed"
               date="August 2020"
+              timeout={timeout}
               play={0 === playIndex}
             />
-            <WorkButton
+            <MemoButton
               setInButton={setInButton}
               setPositions={setPositions}
               setSelectedExperience={() =>
@@ -237,9 +262,10 @@ export const WorkExperience = () => {
               }
               title="Remarkable Commerce"
               date="May 2021"
+              timeout={timeout}
               play={1 === playIndex}
             />
-            <WorkButton
+            <MemoButton
               setInButton={setInButton}
               setPositions={setPositions}
               setSelectedExperience={() => setSelectedExperience(<Experian />)}
@@ -248,21 +274,30 @@ export const WorkExperience = () => {
               }
               title="Experian"
               date="August 2022"
+              timeout={timeout}
               play={["2", "-1"].includes(playIndex.toString())}
             />
           </div>
         </div>
         {breakpoint !== "xs" && breakpoint !== "sm" && (
           <motion.div
+            onMouseEnter={() => {
+              if (timeout.current) {
+                clearTimeout(timeout.current);
+              }
+              setInButton(true);
+            }}
+            onMouseLeave={() => timeout.current = setTimeout(() => setInButton(false), 1000)}
             className="shadow-default flex-grow border-black border-x-[11px] border-y-[10px] hidden md:block"
             animate={{
               x: positions.x * 10,
               y: positions.y * 10,
-              opacity: inButton ? 100 : 0,
+              opacity: inButton ? 1 : 0,
+              pointerEvents: inButton ? "all" : "none",
             }}
             transition={{ type: "tween" }}
           >
-            <div className="bg-slate-600 p-4 py-2 rounded scale-[1.01] h-full">
+            <div className="bg-slate-600 p-4 py-2 rounded scale-[1.01] h-full work-experience overflow-scroll">
               {selectedExperience}
             </div>
           </motion.div>

@@ -40,7 +40,7 @@ export const Projects = () => {
     : getTheme()?.colors.slate["200"];
 
   return (
-    <div className="flex flex-col gap-8 pb-4">
+    <div className="flex flex-col gap-8 pb-8">
       <ProjectCard
         title="Once"
         description="A new take on mobile dating apps. Source code currently privated to keep the concept hidden for now...
