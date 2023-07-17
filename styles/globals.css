@@ -6,6 +6,10 @@
   .shadow-default {
     @apply shadow-sm shadow-slate-600 dark:shadow-slate-900;
   }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  } 
 }
 
 .project-card *:not(a), .work-experience *:not(a) {

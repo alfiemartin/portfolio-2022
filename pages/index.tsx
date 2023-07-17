@@ -70,7 +70,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <main className={`container mx-auto h-full flex flex-col justify-between pt-4 sm:pt-8 overflow-y-hidden ${allowScroll && 'overflow-y-scroll' } md:pt-10 opacity-0 ${swiper?.activeIndex !== undefined && 'opacity-100'}`}>
+      <main className={`container mx-auto h-full flex flex-col justify-between pt-4 hide-scrollbar sm:pt-8 overflow-y-hidden ${allowScroll && 'overflow-y-scroll' } md:pt-10 opacity-0 ${swiper?.activeIndex !== undefined && 'opacity-100'}`}>
         <div>
           <Swiper
             onSwiper={setSwiper}
