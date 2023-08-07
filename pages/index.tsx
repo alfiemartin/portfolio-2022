@@ -1,5 +1,4 @@
 import React, { MouseEvent, useEffect, useRef, useState } from "react";
-import type { NextPage } from "next";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { HashNavigation } from 'swiper';
 import type { Swiper as SwiperType } from "swiper/types";
@@ -16,7 +15,7 @@ export const pages = ['Introduction', 'Professional Experience', 'Projects', 'Co
 const joinedPageNames = pages.map(name => name.split(' ').join(''))
 const pageComponents = [Introduction, WorkExperience, Projects, Contact]
 
-const Home: NextPage = () => {
+const Home = () => {
   const globalState = useGlobalContext();
   const [showNav, setShowNav] = useState(true);
   const [swiper, setSwiper] = useState<SwiperType>();

@@ -288,7 +288,7 @@ export const WorkExperience = () => {
               setInButton(true);
             }}
             onMouseLeave={() => timeout.current = setTimeout(() => setInButton(false), 1000)}
-            className="shadow-default flex-grow border-black border-x-[11px] border-y-[10px] hidden md:block"
+            className="shadow-default flex-grow border-black border-x-[11px] border-y-[10px] h-min hidden md:block"
             animate={{
               x: positions.x * 10,
               y: positions.y * 10,
@@ -297,7 +297,7 @@ export const WorkExperience = () => {
             }}
             transition={{ type: "tween" }}
           >
-            <div className="bg-slate-600 p-4 py-2 rounded scale-[1.01] h-full work-experience overflow-scroll">
+            <div className="bg-slate-600 p-4 py-2 rounded scale-[1.01] h-full work-experience overflow-scroll hide-scrollbar">
               {selectedExperience}
             </div>
           </motion.div>
